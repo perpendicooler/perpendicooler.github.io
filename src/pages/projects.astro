@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import {projects} from '../data/projects';
+---
+<BaseLayout title="Projects | Md Arif Hossain" description="Selected research and analytics projects in facility location, routing, manufacturing capacity, predictive SMV, and combinatorial mathematics.">
+ <div class="container page-shell"><header class="page-header"><p class="eyebrow">PROJECTS / SELECTED WORK</p><h1>Models built for <em>questions worth asking.</em></h1><p class="page-lead">A portfolio of mathematical modeling, algorithms, research computation, and decision-support work. Some industrial details are intentionally generalized to protect confidential data.</p></header>
+  <div class="project-collection">{projects.map(project=><article class="project-feature"><div class="project-meta"><span>{project.number}</span><span>{project.short}</span></div><div><h2><a href={`/projects/${project.slug}/`}>{project.title}</a></h2><p>{project.description}</p><div class="tag-row">{project.tools.map(tool=><span class="tag-pill">{tool}</span>)}</div><a class="inline-link" href={`/projects/${project.slug}/`}>Read the case study ↗</a></div></article>)}</div>
+ </div>
+</BaseLayout>

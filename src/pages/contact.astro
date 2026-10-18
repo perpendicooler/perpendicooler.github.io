@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const channels=[
+ {label:'Email',hint:'Research conversations & professional correspondence',url:'mailto:arif39@student.sust.edu',value:'arif39@student.sust.edu'},
+ {label:'GitHub',hint:'Code and optimization projects',url:'https://github.com/perpendicooler',value:'github.com/perpendicooler'},
+ {label:'LinkedIn',hint:'Professional experience and networking',url:'https://www.linkedin.com/in/md-arif-hossain-7067481a5/',value:'Md Arif Hossain'},
+ {label:'Tableau Public',hint:'Analytics and visualization work',url:'https://public.tableau.com/app/profile/md.arif.hossain/vizzes',value:'Explore dashboards'},
+];
+---
+<BaseLayout title="Contact | Md Arif Hossain" description="Contact Md Arif Hossain about mathematical optimization, operations research, and applied analytics.">
+<div class="container page-shell"><header class="page-header"><p class="eyebrow">CONTACT / COLLABORATION</p><h1>Let’s exchange <em>ideas.</em></h1><p class="page-lead">I welcome conversations about operations research, mathematical optimization, computational mathematics, industrial analytics, and potential doctoral research collaborations.</p><div class="actions"><a class="btn btn-primary" href="mailto:arif39@student.sust.edu">Send an email ↗</a><a class="btn btn-outline" href="/Md_Arif_Hossain_CV.pdf" target="_blank" rel="noopener noreferrer">View CV ↓</a></div></header>
+ <section class="content-section"><p class="eyebrow">CONNECT</p><h2>Where to find me</h2><div class="contact-list">{channels.map(c=><a href={c.url} class="contact-line" target={c.label==='Email'?undefined:'_blank'} rel={c.label==='Email'?undefined:'noopener noreferrer'}><div><p class="mini-label">{c.label}</p><h3>{c.value}</h3><p>{c.hint}</p></div><span aria-hidden="true">↗</span></a>)}</div></section>
+ <section class="cta-band"><div><p class="eyebrow">LOCATION</p><h2>Dhaka, Bangladesh</h2><p>Connecting mathematical research and manufacturing analytics.</p></div></section>
+</div></BaseLayout>

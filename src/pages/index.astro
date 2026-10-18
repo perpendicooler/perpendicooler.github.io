@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { projects } from '../data/projects';
+import { getCollection } from 'astro:content';
+const writing = (await getCollection('blog', ({data}) => !data.draft)).sort((a,b)=>b.data.pubDate.valueOf()-a.data.pubDate.valueOf()).slice(0,3);
+const skills = [
+ {title:'Optimization',items:['Mixed-integer programming','Gurobi','PuLP','NetworkX','SciPy / HiGHS']},
+ {title:'Programming & modeling',items:['Python','MATLAB','R','SQL','NumPy / pandas']},
+ {title:'Machine learning',items:['scikit-learn','XGBoost','PyTorch','TensorFlow / Keras']},
+ {title:'Analytics & communication',items:['Tableau','Power BI / DAX','Excel','LaTeX','Streamlit']},
+];
+---
+<BaseLayout title="Md Arif Hossain | Operations Research & Mathematical Optimization" description="Md Arif Hossain — Mathematics graduate, industrial analytics professional, and aspiring PhD researcher interested in operations research, combinatorial optimization, machine learning, and manufacturing systems.">
+  <div class="container">
+    <section class="hero-shell">
+      <div class="hero-content">
+        <p class="eyebrow"><span class="eyebrow-dot"></span> MATHEMATICS × OPERATIONS RESEARCH × INDUSTRY</p>
+        <h1 class="hero-headline">From mathematical structure to <em>better decisions.</em></h1>
+        <p class="hero-copy">Hi! I’m <strong>Md Arif Hossain</strong>, a Mathematics graduate of Shahjalal University of Science and Technology (SUST) and a Business Intelligence Analyst at INDESORE Group in Bangladesh. My interests lie in <strong>operations research, mathematical optimization, combinatorial methods, and data-driven decision-making.</strong></p>
+        <p class="hero-copy hero-copy-small">My research experience includes combinatorial posets and lattices; my professional work connects optimization and predictive analytics to manufacturing planning.</p>
+        <div class="actions"><a href="/research/" class="btn btn-primary">Explore research <span aria-hidden="true">↗</span></a><a href="/Md_Arif_Hossain_CV.pdf" class="btn btn-outline" target="_blank" rel="noopener noreferrer">View academic CV ↓</a></div>
+      </div>
+      <div class="hero-aside" aria-label="Research domains illustration">
+        <div class="diagram-label">RESEARCH / 001</div>
+        <svg viewBox="0 0 360 330" role="img" aria-label="Connected mathematical decision nodes from theory to application">
+          <defs><linearGradient id="lineGlow" x1="0" x2="1"><stop stop-color="#74d3bd"/><stop offset="1" stop-color="#f1b875"/></linearGradient></defs>
+          <g stroke="#4c6c70" stroke-width="1.2" opacity=".64" fill="none"><path d="M70 65L182 37 283 88 272 208 162 283 64 222Z"/><path d="M70 65L162 283M182 37L272 208M283 88L64 222M70 65L272 208M182 37L64 222"/><path d="M70 65L283 88M162 283L283 88"/></g>
+          <g stroke="url(#lineGlow)" stroke-width="2.2" fill="none"><path d="M70 65L182 37 283 88"/><path d="M182 37L162 283L272 208"/></g>
+          <g fill="#101d25" stroke="#81dcca" stroke-width="2"><circle cx="70" cy="65" r="9"/><circle cx="182" cy="37" r="9"/><circle cx="283" cy="88" r="9"/><circle cx="272" cy="208" r="9"/><circle cx="162" cy="283" r="9"/><circle cx="64" cy="222" r="9"/></g>
+          <g fill="#f1b875"><circle cx="70" cy="65" r="4"/><circle cx="182" cy="37" r="4"/><circle cx="283" cy="88" r="4"/><circle cx="272" cy="208" r="4"/><circle cx="162" cy="283" r="4"/><circle cx="64" cy="222" r="4"/></g>
+          <g fill="#cadbdc" font-size="11" font-family="monospace"><text x="15" y="44">THEORY</text><text x="209" y="25">MODELS</text><text x="290" y="110">SOLVE</text><text x="282" y="233">DEPLOY</text><text x="116" y="310">EVALUATE</text><text x="12" y="247">DATA</text></g>
+        </svg>
+        <div class="equation">min f(x) &nbsp; subject to &nbsp; Ax ≤ b</div>
+        <div class="diagram-caption">An analytical perspective on complex systems.</div>
+      </div>
+    </section>
+    <section class="impact-strip" aria-label="Documented analytics experience">
+      <div><span class="impact-label">Selected CV evidence</span><strong>73.9% → 80.8%</strong><p>Operator-efficiency change supported by productivity analytics</p></div>
+      <div><span class="impact-label">Estimated opportunity</span><strong>≈ $1.16M</strong><p>Incremental revenue opportunity identified in analysis, not realized revenue</p></div>
+      <div><span class="impact-label">Research & practice</span><strong>Math → OR</strong><p>From combinatorial structures to manufacturing planning</p></div>
+    </section>
+    <section class="section-block" aria-labelledby="direction"><div class="section-intro"><div><p class="eyebrow">01 / FOCUS</p><h2 id="direction">Questions that drive my work.</h2></div><p>Where rigorous mathematical models meet operational reality.</p></div>
+      <div class="focus-grid"><article class="focus-card"><span class="focus-number">01</span><h3>Model complex decisions</h3><p>Translate real allocation, routing, and planning problems into tractable mathematical models.</p></article><article class="focus-card"><span class="focus-number">02</span><h3>Search for structure</h3><p>Explore combinatorial systems, finite groups, partially ordered sets, and the algorithms they suggest.</p></article><article class="focus-card"><span class="focus-number">03</span><h3>Connect models to practice</h3><p>Use optimization, scenario analysis, and predictive analytics to inform decisions in industrial systems.</p></article></div>
+    </section>
+    <section class="section-block" aria-labelledby="selected"><div class="section-intro"><div><p class="eyebrow">02 / SELECTED PROJECTS</p><h2 id="selected">Research & applied analytics.</h2></div><a href="/projects/" class="inline-link">All projects ↗</a></div>
+      <div class="project-grid">{projects.slice(0,3).map(project=><a class="project-tile" href={`/projects/${project.slug}/`}><span class="project-id">{project.number} / {project.short}</span><h3>{project.title}</h3><p>{project.description}</p><span class="tile-link">Read case study <span aria-hidden="true">↗</span></span></a>)}</div>
+    </section>
+    <section class="section-block" aria-labelledby="skills"><div class="section-intro"><div><p class="eyebrow">03 / TECHNICAL TOOLKIT</p><h2 id="skills">Tools and methods.</h2></div><p>Methods and software documented in my CV.</p></div><div class="skill-grid">{skills.map(group=><div class="skill-panel"><h3>{group.title}</h3><ul>{group.items.map(skill=><li>{skill}</li>)}</ul></div>)}</div></section>
+    <section class="section-block" aria-labelledby="recent"><div class="section-intro"><div><p class="eyebrow">04 / NOTES & ESSAYS</p><h2 id="recent">Recent writing.</h2></div><a href="/blog/" class="inline-link">Read all articles ↗</a></div><div class="writing-list">{writing.map(post=><a class="writing-line" href={`/blog/${post.id}/`}><span class="writing-date">{post.data.pubDate.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})}</span><span class="writing-title">{post.data.title}</span><span aria-hidden="true">↗</span></a>)}</div></section>
+    <section class="cta-band"><div><p class="eyebrow">LET’S CONNECT</p><h2>Interested in research or collaboration?</h2><p>I'm exploring doctoral research at the intersection of mathematical optimization and applied decision systems.</p></div><a href="/contact/" class="btn btn-primary">Get in touch ↗</a></section>
+  </div>
+</BaseLayout>

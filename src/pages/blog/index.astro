@@ -1,0 +1,10 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { slugifyTag } from '../../utils/tags';
+const posts=(await getCollection('blog', ({data})=>!data.draft)).sort((a,b)=>b.data.pubDate.valueOf()-a.data.pubDate.valueOf());
+---
+<BaseLayout title="Writing | Md Arif Hossain" description="Academic essays on group theory, combinatorics, minimax, game theory, and manufacturing operations research.">
+<div class="container page-shell"><header class="page-header"><p class="eyebrow">WRITING / NOTES & ESSAYS</p><h1>Mathematics, algorithms, <em>and the world they model.</em></h1><p class="page-lead">Expository notes and technical essays on combinatorics, group theory, adversarial algorithms, and data-driven operational planning.</p></header>
+<section class="content-section"><div class="writing-list">{posts.map(post=><article class="writing-entry"><div><p class="mini-label">{post.data.pubDate.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})}</p><h2><a href={`/blog/${post.id}/`}>{post.data.title}</a></h2><p>{post.data.description}</p><div class="tag-row">{post.data.tags.map(tag=><a class="tag-pill" href={`/blog/tags/${slugifyTag(tag)}/`}>{tag}</a>)}</div></div><a href={`/blog/${post.id}/`} class="article-arrow" aria-label={`Read ${post.data.title}`}>↗</a></article>)}</div></section>
+</div></BaseLayout>
