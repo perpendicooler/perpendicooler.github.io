@@ -3,7 +3,7 @@ title: 'Tic-Tac-Toe as an Extensive-Form Game: Strategy, Equilibrium, and Backwa
   Induction'
 description: Modeling Tic-Tac-Toe as a finite two-player zero-sum game with perfect
   information, game trees, subgames, and rational strategies.
-pubDate: '2026-10-18'
+pubDate: '2023-10-09'
 tags:
 - Game Theory
 - Tic Tac Toe
