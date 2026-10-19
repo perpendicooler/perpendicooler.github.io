@@ -5,7 +5,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 // then change this value to "/images/Arif_Profile.jpg".
 const portrait = "/images/Arif_Profile.jpg";
 
+
 const presentations = [
+  {
+    label: "ICCIT 2026",
+    title: "Fine-Grained Classification of Depression, Loneliness, and Fear in Bangla Social Media Text",
+    authors: "Sadia Ahmed, Md Arif Hossain, Md Anisujjaman, Mohammed Minhaj Uddin, and Md. Shafiul Alam Forhad",
+    venue: "29th International Conference on Computer and Information Technology (ICCIT 2026)",
+    note: "Manuscript submitted · Under review",
+  },
   {
     label: "ICSTEME 2023",
     title: "Rubik's Cube — An Application of Group Theory",
@@ -21,6 +29,7 @@ const presentations = [
     note: "Contributory talk · 2023",
   },
 ];
+
 ---
 
 <BaseLayout
@@ -40,7 +49,7 @@ const presentations = [
         <p>
           I previously worked as a research student at the SUST Research Center,
           investigating matrix methods for <strong>partially ordered sets and lattices</strong>
-          under the guidance of <strong>Dr. Mohammad Salah Uddin</strong>.
+          under the guidance of <strong> <a href="https://www.sust.edu/departments/mat/faculty/salahuddin-mat%40sust.edu" target="_blank" rel="noopener noreferrer" > Dr. Mohammad Salah Uddin </a> </strong>.
         </p>
         <p>
           My interests lie in <strong>Operations Research, Mathematical Optimization,
