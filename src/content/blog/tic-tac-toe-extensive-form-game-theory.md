@@ -14,7 +14,7 @@ draft: false
 
 *By Md Arif Hossain · A mathematical introduction to strategic interaction*
 
-![An extensive-form game tree for a simplified game decision](/images/blog/tictactoe-game-tree.svg)
+![An extensive-form game tree for a simplified game decision](/images/blog/tic-tac-toe-game-animated.svg)
 
 A game as elementary as Tic-Tac-Toe can introduce several ideas that also appear in economic modeling, algorithm design, and operations research. Its rules are familiar: two players alternate marking empty squares in a 3 × 3 grid, and the first to complete a horizontal, vertical, or diagonal line of three wins. What is less obvious is that the game can be understood as a formally specified *sequential decision process* in which rational players anticipate one another's future choices. Once the problem is expressed in this language, concepts such as game trees, backward induction, zero-sum utility, equilibrium, and the value of information become tangible.
 
