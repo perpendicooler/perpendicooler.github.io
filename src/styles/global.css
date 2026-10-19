@@ -565,25 +565,244 @@ select {
 
 
 /* LIGHT THEME PALETTE */
+/* ======================================================
+   ACCESSIBLE DARK / LIGHT TOGGLE — ADD AT END OF FILE
+   Dark is the default; the selection is saved in the header.
+   ====================================================== */
+
+/* Shared toggle appearance (both themes). */
+.site-header .theme-toggle {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 7px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+  line-height: 1;
+}
+.site-header .theme-toggle:hover {
+  background: var(--color-surface-raised);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+.site-header .theme-toggle:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+.theme-toggle .theme-icon-moon { display: none; }
+.theme-toggle .theme-icon-sun { display: block; }
+html[data-theme="light"] .theme-toggle .theme-icon-sun { display: none; }
+html[data-theme="light"] .theme-toggle .theme-icon-moon { display: block; }
+
+/* Light theme's shared color tokens. */
 :root[data-theme="light"] {
   color-scheme: light;
-
   --color-bg: #ffffff;
-  --color-surface: #f8fafc;
-  --color-surface-raised: #f1f5f9;
-  --color-panel: #f8fafc;
-  --color-border: #e2e8f0;
-
-  --color-text: #1e293b;
-  --color-text-muted: #475569;
-  --color-text-subtle: #64748b;
-
-  --color-accent: #0277bd;
-  --color-accent-hover: #01579b;
-  --color-secondary: #0277bd;
-
+  --color-surface: #f7f9fc;
+  --color-surface-raised: #edf3f9;
+  --color-panel: #f7f9fc;
+  --color-border: #dae2ea;
+  --color-text: #182332;
+  --color-text-muted: #435266;
+  --color-text-subtle: #65748a;
+  --color-accent: #026da7;
+  --color-accent-hover: #004b79;
+  --color-secondary: #026da7;
   --accent: var(--color-accent);
   --text: var(--color-text);
   --text-muted: var(--color-text-muted);
   --border: var(--color-border);
 }
+
+/* Background, text, selection and main navigation. */
+html[data-theme="light"],
+html[data-theme="light"] body {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+html[data-theme="light"] body::before { display: none; }
+html[data-theme="light"] ::selection {
+  background: #bfe4fb;
+  color: #143149;
+}
+html[data-theme="light"] .site-header {
+  background: #ffffff;
+  border-bottom-color: var(--color-border);
+}
+html[data-theme="light"] .site-header .brand,
+html[data-theme="light"] .site-header .nav-anchor,
+html[data-theme="light"] .site-header .nav-cv {
+  color: var(--color-text);
+}
+html[data-theme="light"] .site-header .nav-anchor:hover,
+html[data-theme="light"] .site-header .nav-anchor.current,
+html[data-theme="light"] .site-header .nav-cv:hover,
+html[data-theme="light"] .site-header .brand-stop {
+  color: var(--color-accent);
+  background: transparent;
+}
+
+/* Page titles, body text, links and small labels. */
+html[data-theme="light"] .page-header h1,
+html[data-theme="light"] .section-intro h2,
+html[data-theme="light"] .content-section h2,
+html[data-theme="light"] .page-shell h2,
+html[data-theme="light"] .page-shell h3,
+html[data-theme="light"] .blog-content h1,
+html[data-theme="light"] .blog-content h2,
+html[data-theme="light"] .blog-content h3,
+html[data-theme="light"] .blog-content h4 {
+  color: var(--color-text);
+}
+html[data-theme="light"] .page-header h1 em { color: var(--color-accent); }
+html[data-theme="light"] .page-lead,
+html[data-theme="light"] .prose-block,
+html[data-theme="light"] .prose-block p,
+html[data-theme="light"] .blog-content,
+html[data-theme="light"] .blog-content p,
+html[data-theme="light"] .blog-content blockquote,
+html[data-theme="light"] .section-note,
+html[data-theme="light"] .project-feature p,
+html[data-theme="light"] .writing-entry p:not(.mini-label),
+html[data-theme="light"] .contact-line p,
+html[data-theme="light"] .research-card p,
+html[data-theme="light"] .contrib p {
+  color: var(--color-text-muted);
+}
+html[data-theme="light"] .prose-block strong,
+html[data-theme="light"] .blog-content strong { color: var(--color-text); }
+html[data-theme="light"] .eyebrow,
+html[data-theme="light"] .mini-label,
+html[data-theme="light"] .timeline-year,
+html[data-theme="light"] .focus-number {
+  color: var(--color-accent) !important;
+}
+html[data-theme="light"] .inline-link,
+html[data-theme="light"] .prose-block a,
+html[data-theme="light"] .blog-content a {
+  color: var(--color-accent);
+}
+html[data-theme="light"] .inline-link:hover,
+html[data-theme="light"] .prose-block a:hover,
+html[data-theme="light"] .blog-content a:hover {
+  color: var(--color-accent-hover);
+}
+
+/* Home: its Astro-scoped CSS has fixed dark colors. */
+html[data-theme="light"] .minimal-home h1,
+html[data-theme="light"] .minimal-home h2,
+html[data-theme="light"] .minimal-home h3,
+html[data-theme="light"] .minimal-home .intro-copy strong {
+  color: var(--color-text);
+}
+html[data-theme="light"] .minimal-home .intro-copy p,
+html[data-theme="light"] .minimal-home .publication-copy p,
+html[data-theme="light"] .minimal-home .publication-copy .publication-venue,
+html[data-theme="light"] .minimal-home .profile-details {
+  color: var(--color-text-muted);
+}
+html[data-theme="light"] .minimal-home .publication-copy .publication-note {
+  color: var(--color-text-subtle);
+}
+html[data-theme="light"] .minimal-home a { color: var(--color-accent); }
+html[data-theme="light"] .minimal-home a:hover { color: var(--color-accent-hover); }
+html[data-theme="light"] .minimal-home .social-links a { color: var(--color-text); }
+html[data-theme="light"] .minimal-home .social-links a:hover { color: var(--color-accent); }
+html[data-theme="light"] .minimal-home .conference-tag {
+  background: #d5eefa;
+  color: #124364;
+  border: 1px solid #b3dcec;
+}
+
+/* Cards, headings, tags and dividers across interior pages. */
+html[data-theme="light"] .content-section,
+html[data-theme="light"] .section-block,
+html[data-theme="light"] .timeline,
+html[data-theme="light"] .timeline-item,
+html[data-theme="light"] .paper-list,
+html[data-theme="light"] .paper-item,
+html[data-theme="light"] .project-collection,
+html[data-theme="light"] .project-feature,
+html[data-theme="light"] .writing-entry,
+html[data-theme="light"] .writing-line,
+html[data-theme="light"] .contact-list,
+html[data-theme="light"] .contact-line {
+  border-color: var(--color-border);
+}
+html[data-theme="light"] .focus-card,
+html[data-theme="light"] .project-tile,
+html[data-theme="light"] .research-card,
+html[data-theme="light"] .skill-panel,
+html[data-theme="light"] .contrib,
+html[data-theme="light"] .cta-band,
+html[data-theme="light"] .model-note {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+}
+html[data-theme="light"] .project-tile:hover {
+  background: var(--color-surface-raised);
+  border-color: var(--color-accent);
+}
+html[data-theme="light"] .tag-pill {
+  background: var(--color-surface-raised);
+  border-color: var(--color-border);
+  color: var(--color-text-muted);
+}
+html[data-theme="light"] .tag-pill:hover { color: var(--color-accent); }
+html[data-theme="light"] .project-feature h2 a,
+html[data-theme="light"] .writing-entry h2 a,
+html[data-theme="light"] .contact-line {
+  color: var(--color-text);
+}
+html[data-theme="light"] .project-feature h2 a:hover,
+html[data-theme="light"] .writing-entry h2 a:hover,
+html[data-theme="light"] .contact-line:hover { color: var(--color-accent); }
+
+/* Buttons, projects and article surfaces. */
+html[data-theme="light"] .btn-primary {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #ffffff;
+}
+html[data-theme="light"] .btn-primary:hover {
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+  color: #ffffff;
+}
+html[data-theme="light"] .btn-outline {
+  background: transparent;
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+html[data-theme="light"] .btn-outline:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+html[data-theme="light"] .project-preview,
+html[data-theme="light"] .project-detail-image,
+html[data-theme="light"] .blog-content img {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+}
+html[data-theme="light"] .blog-content :not(pre) > code {
+  background: #e9f2f8;
+  color: #184d70;
+}
+html[data-theme="light"] .blog-content blockquote { border-left-color: var(--color-accent); }
+html[data-theme="light"] .blog-content table td,
+html[data-theme="light"] .blog-content table th { border-color: var(--color-border); }
+
+/* The dark-themed code blocks remain dark by design, for code legibility. */
+
+@media (max-width: 650px) {
+  .site-header .theme-toggle {
+    width: 35px;
+    height: 35px;
+  }
+}
+
