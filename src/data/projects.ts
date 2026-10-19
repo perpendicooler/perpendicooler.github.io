@@ -78,7 +78,7 @@ export const projects = [
     // To show a live link only after you confirm the app contains no sensitive employee records:
     // demo: 'https://subsidy-insight-flow.base44.app',
     demo: '', image: '',
-    note: 'Prototype/app reference supplied by the project author. Before enabling its public link or uploading screenshots, confirm that employee names, IDs, salary information, and attendance records cannot be exposed.'
+    note: 'Developed a workforce subsidy governance and analytics framework to examine allocation patterns, attendance, employee grades, and departmental distributions. The project emphasizes transparency, data consistency, and evidence-based resource allocation while respecting employee data confidentiality.',
   },
   {
     slug: 'free-fund-financial-allocation',
