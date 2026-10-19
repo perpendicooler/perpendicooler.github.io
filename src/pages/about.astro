@@ -438,4 +438,132 @@ const awards = [
   }
 }
 
+/* MINIMAL TECHNICAL SKILLS ICON GRID */
+
+.tech-icon-groups {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.tech-icon-group h3 {
+  margin: 0 0 12px;
+  color: var(--color-text);
+  font-size: 0.94rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.tech-icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(58px, 1fr));
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.tech-tile {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: default;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.tech-tile:hover,
+.tech-tile:focus-visible {
+  border-color: var(--color-accent);
+  background: var(--color-surface-raised);
+}
+
+.tech-tile:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.tech-tile img {
+  display: block;
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.tech-symbol {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-accent);
+}
+
+/* Keep monochrome brand icons visible in dark mode */
+html:not([data-theme="light"]) .tech-mono img {
+  filter: invert(1);
+}
+
+/* Icon name tooltip */
+.tech-tile::after {
+  content: attr(data-name);
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 7px);
+  transform: translateX(-50%);
+  padding: 5px 9px;
+  border: 1px solid var(--color-border);
+  border-radius: 5px;
+  background: var(--color-surface-raised);
+  color: var(--color-text);
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.3;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.tech-tile:hover::after,
+.tech-tile:focus-visible::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tech-icon-groups > .inline-link {
+  align-self: flex-start;
+  font-size: 0.92rem;
+  margin-top: 2px;
+}
+
+@media (max-width: 650px) {
+  .tech-icon-grid {
+    grid-template-columns: repeat(auto-fill, minmax(52px, 1fr));
+    gap: 8px;
+  }
+
+  .tech-tile {
+    height: 54px;
+  }
+
+  .tech-tile img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tech-tile {
+    transition: none;
+  }
+}
+
+
 </style>
