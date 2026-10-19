@@ -400,4 +400,81 @@ const awards = [
   .organization-links a:hover {
     text-decoration: underline;
   }
+
+/* TECHNICAL SKILLS SECTION */
+
+#technical-skills {
+  scroll-margin-top: 90px;
+}
+
+.technical-content {
+  min-width: 0;
+}
+
+.technical-intro {
+  margin: 0 0 24px;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.technical-groups {
+  display: flex;
+  flex-direction: column;
+}
+
+.technical-group {
+  padding: 17px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.technical-group:first-child {
+  padding-top: 0;
+}
+
+.technical-group h3,
+.technical-applications h3 {
+  margin: 0 0 7px;
+  color: var(--color-text);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.technical-group p,
+.technical-applications p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.96rem;
+  line-height: 1.72;
+}
+
+.technical-applications {
+  margin-top: 30px;
+}
+
+.technical-applications p {
+  margin-bottom: 13px;
+}
+
+.technical-applications .inline-link {
+  display: inline-block;
+  margin-top: 7px;
+}
+
+@media (max-width: 650px) {
+  .technical-intro {
+    font-size: 0.95rem;
+  }
+
+  .technical-group {
+    padding: 15px 0;
+  }
+
+  .technical-group p,
+  .technical-applications p {
+    font-size: 0.93rem;
+  }
+}
+
 </style>
