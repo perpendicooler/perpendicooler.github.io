@@ -562,3 +562,28 @@ select {
     font-size: 0.84rem;
   }
 }
+
+
+/* LIGHT THEME PALETTE */
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --color-bg: #ffffff;
+  --color-surface: #f8fafc;
+  --color-surface-raised: #f1f5f9;
+  --color-panel: #f8fafc;
+  --color-border: #e2e8f0;
+
+  --color-text: #1e293b;
+  --color-text-muted: #475569;
+  --color-text-subtle: #64748b;
+
+  --color-accent: #0277bd;
+  --color-accent-hover: #01579b;
+  --color-secondary: #0277bd;
+
+  --accent: var(--color-accent);
+  --text: var(--color-text);
+  --text-muted: var(--color-text-muted);
+  --border: var(--color-border);
+}
