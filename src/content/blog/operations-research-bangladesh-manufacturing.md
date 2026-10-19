@@ -14,7 +14,7 @@ draft: false
 
 *By Md Arif Hossain · Business Intelligence Analyst, INDESORE Group · Dhaka, Bangladesh*
 
-![Conceptual pathway from manufacturing records to decision support](/images/blog/manufacturing-analytics-flow.svg)
+![Conceptual pathway from manufacturing records to decision support](/images/blog/manufacturing-flow-animated.svg)
 
 My interest in operations research did not begin with a perfectly defined mathematical optimization problem. It grew from a much less tidy setting: working with production records, machine utilization, people, expenditures, and financial allocations at a knitwear manufacturer in Bangladesh. The more I worked with the data, the more I realized that **measuring what happened is only the beginning**. The difficult questions concern what management should do next—and what to do when the assumptions behind a plan turn out to be wrong.
 
