@@ -1,10 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-// Upload your own photograph to public/images/Arif_Profile.jpg,
-// then change this value to "/images/Arif_Profile.jpg".
-const portrait = "/images/Arif_Profile.jpg";
-
 
 const presentations = [
   {
@@ -59,16 +55,7 @@ const presentations = [
         </p>
       </div>
 
-     <aside class="profile-aside" aria-label="Profile and contact information">
-        <img
-          class="profile-photo"
-          src={portrait}
-          width="320"
-          height="345"
-          alt="Portrait area for Md Arif Hossain"
-          decoding="async"
-         />
-
+      <aside class="profile-aside" aria-label="Contact information">
         <div class="profile-details">
           <a href="mailto:arif39@student.sust.edu">arif39@student.sust.edu</a>
           <span>Dhaka, Bangladesh</span>
@@ -129,7 +116,8 @@ const presentations = [
   :global(.back-to-top) { display: none !important; }
 
   .minimal-home { max-width: 970px; width: calc(100% - 2.5rem); margin: 0 auto; padding: 52px 0 72px; }
-  .intro-layout { display: grid; grid-template-columns: minmax(0, 1fr) 285px; gap: 46px; align-items: start; }
+  .intro-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; align-items: start; }
+  .intro-copy { max-width: 850px; }
   h1, h2, h3, p { margin-top: 0; }
   h1 { margin: 0 0 20px; font-size: clamp(2.2rem, 4vw, 2.8rem); font-weight: 400; letter-spacing: -.04em; line-height: 1.2; color: #e8e8e8; }
   .intro-copy { padding-top: 2px; }
@@ -137,10 +125,9 @@ const presentations = [
   .intro-copy strong { font-weight: 650; color: #f4f4f4; }
   .minimal-home a { color: #39aad8; text-decoration: none; }
   .minimal-home a:hover { color: #7fd9f2; text-decoration: underline; }
-  .profile-aside { padding-top: 34px; }
-  .profile-photo { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1.08; object-fit: cover; border-radius: 4px; background: #292929; border: 1px solid #383838; }
-  .profile-details { margin-top: 13px; display: flex; flex-direction: column; gap: 2px; font: .84rem/1.5 var(--font-mono, monospace); overflow-wrap: anywhere; color: #d5d5d5; }
-  .contributions { margin-top: 62px; }
+  .profile-aside { padding-top: 0; }
+  .profile-details { margin-top: 0; display: flex; flex-direction: column; gap: 2px; font: .86rem/1.5 var(--font-sans, Arial, sans-serif); overflow-wrap: anywhere; color: #d5d5d5; }
+  .contributions { margin-top: 52px; }
   .contribution-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
   h2 { margin: 0 0 25px; font-size: clamp(1.55rem, 3vw, 2rem); font-weight: 400; letter-spacing: -.025em; line-height: 1.25; color: #ececec; }
   .section-link { white-space: nowrap; font-size: .89rem; }
@@ -158,16 +145,15 @@ const presentations = [
   .social-links .cv-link { font: 700 1.03rem/1 var(--font-sans, sans-serif); letter-spacing: -.03em; border: 2px solid currentColor; border-radius: 5px; width: 36px; height: 30px; }
   @media (max-width: 800px) {
     .minimal-home { padding-top: 38px; }
-    .intro-layout { grid-template-columns: minmax(0, 1fr) 240px; gap: 26px; }
-    .profile-aside { padding-top: 30px; }
+    .intro-layout { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+    .profile-aside { padding-top: 0; }
     .intro-copy p { font-size: .95rem; }
   }
   @media (max-width: 650px) {
     .minimal-home { width: calc(100% - 2rem); padding: 35px 0 55px; }
     .intro-layout { display: flex; flex-direction: column; gap: 14px; }
     .profile-aside { padding-top: 0; width: 100%; display: flex; align-items: center; gap: 17px; }
-    .profile-photo { width: 136px; height: 148px; flex-shrink: 0; }
-    .profile-details { margin-top: 0; font-size: .78rem; }
+    .profile-details { margin-top: 0; font-size: .82rem; }
     .contributions { margin-top: 43px; }
     .publication-row { grid-template-columns: 1fr; gap: 8px; }
     .conference-tag { justify-self: start; width: auto; padding-inline: 9px; }
