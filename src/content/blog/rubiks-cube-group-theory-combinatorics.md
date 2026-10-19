@@ -13,7 +13,7 @@ draft: false
 
 *By Md Arif Hossain · Mathematics and recreational problem solving*
 
-![A Rubik's Cube illustrating a finite permutation puzzle](/images/blog/Rubiks_Cube.svg)
+![A Rubik's Cube illustrating a finite permutation puzzle](/images/blog/rubiks-group-animated.svg)
 
 A Rubik's Cube is simultaneously a mechanical puzzle and an extraordinarily concrete model of abstract algebra. A turn feels like a physical operation, yet it can be described precisely as a permutation of smaller pieces. A solution feels like a sequence of remembered algorithms, yet it can also be understood as the construction of a word in a finite group whose product is the inverse of a scrambled state. The bridge from the physical object to the mathematical model is especially valuable because it turns unfamiliar concepts—groups, parity, generators, conjugacy, commutators, and invariants—into operations one can actually see and test.
 
