@@ -2,7 +2,7 @@
 title: 'The Rubik''s Cube as a Finite Group: Permutations, Invariants, and Combinatorics'
 description: A mathematical introduction to the Rubik's Cube through permutation groups,
   orientation invariants, commutators, and counting arguments.
-pubDate: '2026-10-18'
+pubDate: '2022-05-07'
 tags:
 - Group Theory
 - Combinatorics
