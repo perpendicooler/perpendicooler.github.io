@@ -14,7 +14,7 @@ draft: false
 
 *By Md Arif Hossain · Symmetry and counting in discrete mathematics*
 
-![A Tic-Tac-Toe board transformed under rotations and reflections](/images/blog/tictactoe-symmetry.svg)
+![A Tic-Tac-Toe board transformed under rotations and reflections](/images/blog/symmetry-burnside-animated.svg)
 
 When we rotate a Tic-Tac-Toe board by 90 degrees, the strategic situation does not change. The top-left corner becomes the top-right corner, but a win remains a win, a forced block remains a forced block, and the legal moves retain their essential structure. Reflection across a diagonal produces another equivalent representation. This familiar geometric observation has an exact algebraic formulation: the symmetries of a square form a finite group, and the group acts on the set of board configurations. Once that action is made explicit, we can count distinct patterns and accelerate game-solving algorithms by avoiding redundant evaluations.
 
