@@ -3,7 +3,7 @@ title: 'Minimax and Alpha–Beta Pruning: From Mathematical Recursion to a Pytho
   Solver'
 description: Deriving adversarial search, implementing a correct Tic-Tac-Toe solver,
   and explaining how alpha–beta pruning avoids unnecessary branches.
-pubDate: '2026-10-18'
+pubDate: '2023-06-05'
 tags:
 - Minimax
 - Alpha Beta Pruning
