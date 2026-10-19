@@ -2,7 +2,7 @@
 title: Symmetry, Burnside's Lemma, and the Combinatorics of Tic-Tac-Toe
 description: Counting board patterns using the dihedral group D4, understanding Burnside's
   lemma, and reducing equivalent states in game-search algorithms.
-pubDate: '2026-10-18'
+pubDate: '2023-01-18'
 tags:
 - Combinatorics
 - Group Theory
