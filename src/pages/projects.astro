@@ -1,9 +1,74 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import {projects} from '../data/projects';
+import { projects } from '../data/projects';
 ---
-<BaseLayout title="Projects | Md Arif Hossain" description="Selected research and analytics projects in facility location, routing, manufacturing capacity, predictive SMV, and combinatorial mathematics.">
- <div class="container page-shell"><header class="page-header"><p class="eyebrow">PROJECTS / SELECTED WORK</p><h1>Models built for <em>questions worth asking.</em></h1><p class="page-lead">A portfolio of mathematical modeling, algorithms, research computation, and decision-support work. Some industrial details are intentionally generalized to protect confidential data.</p></header>
-  <div class="project-collection">{projects.map(project=><article class="project-feature"><div class="project-meta"><span>{project.number}</span><span>{project.short}</span></div><div><h2><a href={`/projects/${project.slug}/`}>{project.title}</a></h2><p>{project.description}</p><div class="tag-row">{project.tools.map(tool=><span class="tag-pill">{tool}</span>)}</div><a class="inline-link" href={`/projects/${project.slug}/`}>Read the case study ↗</a></div></article>)}</div>
- </div>
+
+<BaseLayout
+  title="Projects | Md Arif Hossain"
+  description="Work in production performance, factory bottlenecks, machine-wise style allocation, subsidy governance, financial allocation, utilities, SMV modeling, and mathematical research."
+>
+  <div class="container page-shell">
+    <header class="page-header">
+      <p class="eyebrow">SELECTED PROJECTS / RESEARCH & INDUSTRY</p>
+      <h1>From factory observations to <em>better decisions.</em></h1>
+      <p class="page-lead">
+        My work began with production-performance visibility and expanded into
+        bottleneck analysis, machine-wise allocation, subsidy governance,
+        financial resource planning, and predictive modeling.
+        Industrial examples are described at a high level to protect sensitive information.
+      </p>
+    </header>
+
+    <div class="project-collection">
+      {projects.map((project) => (
+        <article class="project-feature">
+          <div class="project-meta">
+            <span>{project.number}</span>
+            <span>{project.short}</span>
+          </div>
+          <div class="project-content">
+            {project.image && (
+              <a href={`/projects/${project.slug}/`} aria-label={`Read ${project.title}`}>
+                <img
+                  class="project-preview"
+                  src={project.image}
+                  alt={`Approved illustrative or anonymized screenshot of ${project.title}`}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+            )}
+            <h2><a href={`/projects/${project.slug}/`}>{project.title}</a></h2>
+            <p>{project.description}</p>
+            <div class="tag-row">
+              {project.tools.map((tool) => <span class="tag-pill">{tool}</span>)}
+            </div>
+            <div class="project-links">
+              <a class="inline-link" href={`/projects/${project.slug}/`}>Read case study ↗</a>
+              {project.demo && (
+                <a class="inline-link" href={project.demo} target="_blank" rel="noopener noreferrer">View approved demo ↗</a>
+              )}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
 </BaseLayout>
+
+<style>
+  .project-content { min-width: 0; }
+  .project-preview {
+    display: block;
+    width: 100%;
+    max-height: 340px;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+    background: #242424;
+    border: 1px solid #383838;
+    border-radius: 5px;
+    margin: 0 0 1.25rem;
+  }
+  .project-links { display: flex; flex-wrap: wrap; gap: .7rem 1.5rem; margin-top: .5rem; }
+  .project-feature .project-content > p { line-height: 1.7; }
+</style>
