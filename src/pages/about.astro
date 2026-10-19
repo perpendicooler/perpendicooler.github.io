@@ -3,7 +3,11 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const indesoreWebsite = "https://www.indesore.com/";
-const indesoreLinkedIn = "https://www.linkedin.com/company/indesoregroup/";
+const indesoreLinkedIn =
+  "https://www.linkedin.com/company/indesoregroup/";
+
+const salahUddinProfile =
+  "https://www.sust.edu/departments/mat/faculty/salahuddin-mat%40sust.edu";
 
 const timeline = [
   {
@@ -38,20 +42,20 @@ const awards = [
 
 <BaseLayout
   title="About | Md Arif Hossain"
-  description="Academic background, combinatorial research, industrial analytics experience, and mathematical interests of Md Arif Hossain."
+  description="Academic background, mathematical research, industrial analytics experience, and research interests of Md Arif Hossain."
 >
-  <div class="container page-shell">
+  <div class="about-page">
 
-    <!-- INTRODUCTION -->
-    <header class="page-header">
-      <p class="eyebrow">BACKGROUND / JOURNEY</p>
+    <!-- PAGE INTRODUCTION -->
+    <header class="about-hero">
+      <p class="about-label">BACKGROUND / JOURNEY</p>
 
       <h1>
         Curiosity about mathematics.
-        <em>Motivation to apply it.</em>
+        <em> Motivation to apply it.</em>
       </h1>
 
-      <p class="page-lead">
+      <p class="about-lead">
         I began in pure and computational mathematics and found
         a new set of questions in industrial systems: how can
         models allocate scarce resources, anticipate uncertainty,
@@ -60,13 +64,13 @@ const awards = [
     </header>
 
     <!-- ABOUT ME -->
-    <section class="content-section two-col">
-      <div>
-        <p class="eyebrow">AT A GLANCE</p>
+    <section class="about-section split-section">
+      <div class="section-heading">
+        <p class="about-label">AT A GLANCE</p>
         <h2>About me</h2>
       </div>
 
-      <div class="prose-block">
+      <div class="section-content">
         <p>
           I am <strong>Md Arif Hossain</strong>, a Mathematics
           graduate from
@@ -74,27 +78,19 @@ const awards = [
             href="https://www.sust.edu/"
             target="_blank"
             rel="noopener noreferrer"
-          >
-            Shahjalal University of Science and Technology (SUST)
-          </a>,
+          >Shahjalal University of Science and Technology (SUST)</a>,
           Bangladesh, and a Business Intelligence Analyst at
-          <strong>
-            <a
-              href={indesoreWebsite}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              INDESORE Group
-            </a>
-          </strong>.
+          <a
+            href={indesoreWebsite}
+            target="_blank"
+            rel="noopener noreferrer"
+          ><strong>INDESORE Group</strong></a>.
           You can also find the organization on
           <a
             href={indesoreLinkedIn}
             target="_blank"
             rel="noopener noreferrer"
-          >
-            LinkedIn ↗
-          </a>.
+          >LinkedIn ↗</a>.
         </p>
 
         <p>
@@ -102,75 +98,81 @@ const awards = [
           <strong>partially ordered sets and lattices</strong>
           under the guidance of
           <a
-            href="https://www.sust.edu/departments/mat/faculty/salahuddin-mat%40sust.edu"
+            href={salahUddinProfile}
             target="_blank"
             rel="noopener noreferrer"
-          >
-            <strong>Dr. Mohammad Salah Uddin</strong>
-          </a>.
-          I also completed an undergraduate thesis on determinants,
-          inverses, and eigenvalues of infinite matrices.
-          Those experiences helped shape my interest in rigorous
-          mathematical analysis and computation.
+          ><strong>Dr. Mohammad Salah Uddin</strong></a>.
+          I also completed an undergraduate thesis on
+          determinants, inverses, and eigenvalues of infinite
+          matrices. These experiences shaped my interest in
+          rigorous mathematical analysis and computation.
         </p>
 
         <p>
           In professional practice, I have worked with production
           planning, Standard Minute Value estimation, capacity
-          feasibility, efficiency, and operational decision support.
-          Seeing the constraints and uncertainty of real
-          manufacturing operations has deepened my interest in
+          feasibility, efficiency, and operational decision
+          support. Working with the constraints and uncertainty
+          of manufacturing operations has deepened my interest in
           <strong>
             operations research, mixed-integer programming,
-            and large-scale optimization
-          </strong>.
+            and large-scale optimization.
+          </strong>
         </p>
 
         <p>
           I am interested in pursuing PhD research that connects
           mathematical theory, algorithms, and practical
-          decision-making in manufacturing and supply-chain systems.
+          decision-making in manufacturing and supply-chain
+          systems.
         </p>
       </div>
     </section>
 
     <!-- EDUCATION, RESEARCH AND EXPERIENCE -->
-    <section class="content-section">
-      <p class="eyebrow">EDUCATION · RESEARCH · EXPERIENCE</p>
+    <section class="about-section milestones-section">
+      <div class="section-heading">
+        <p class="about-label">
+          EDUCATION · RESEARCH · EXPERIENCE
+        </p>
+        <h2>Selected milestones</h2>
+      </div>
 
-      <h2>Selected milestones</h2>
+      <div class="timeline-list">
+        {timeline.map((item) => (
+          <article class="milestone">
+            <div class="milestone-period">
+              {item.period}
+            </div>
 
-      <div class="timeline">
-        {timeline.map((t) => (
-          <article class="timeline-item">
-            <p class="timeline-year">{t.period}</p>
+            <div class="milestone-content">
+              <span class="milestone-label">
+                {item.label}
+              </span>
 
-            <div>
-              <span class="mini-label">{t.label}</span>
+              <h3>{item.title}</h3>
 
-              <h3>{t.title}</h3>
+              <p class="milestone-sub">
+                {item.sub}
+              </p>
 
-              <p class="muted">{t.sub}</p>
+              <p>{item.copy}</p>
 
-              <p>{t.copy}</p>
-
-              {t.label === "Research" && (
-                <p>
+              {item.label === "Research" && (
+                <div class="milestone-links">
                   <a
-                    class="inline-link"
-                    href="https://www.sust.edu/departments/mat/faculty/salahuddin-mat%40sust.edu"
+                    href={salahUddinProfile}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Research supervisor's SUST profile ↗
+                    Supervisor's SUST profile ↗
                   </a>
-                </p>
+                </div>
               )}
 
-              {t.label === "Industry" && (
-                <p class="organization-links">
+              {item.label === "Industry" && (
+                <div class="milestone-links">
                   <a
-                    class="inline-link"
                     href={indesoreWebsite}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -178,17 +180,16 @@ const awards = [
                     Official Website ↗
                   </a>
 
-                  <span class="link-separator"> · </span>
+                  <span aria-hidden="true">·</span>
 
                   <a
-                    class="inline-link"
                     href={indesoreLinkedIn}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    INDESORE LinkedIn ↗
+                    LinkedIn ↗
                   </a>
-                </p>
+                </div>
               )}
             </div>
           </article>
@@ -197,17 +198,16 @@ const awards = [
     </section>
 
     <!-- UNDERGRADUATE THESIS -->
-    <section class="content-section two-col">
-      <div>
-        <p class="eyebrow">UNDERGRADUATE THESIS</p>
-
+    <section class="about-section split-section">
+      <div class="section-heading">
+        <p class="about-label">UNDERGRADUATE THESIS</p>
         <h2>Numerical &amp; computational mathematics</h2>
       </div>
 
-      <div class="prose-block">
+      <div class="section-content">
         <h3>
-          On the Determinant, Inverse, and Eigenvalues of
-          Infinite Matrices
+          On the Determinant, Inverse, and Eigenvalues
+          of Infinite Matrices
         </h3>
 
         <p>
@@ -215,36 +215,35 @@ const awards = [
           inverse constructions, eigenvalues, matrix logarithms,
           convergence, and series-expansion methods in the
           setting of infinite matrices.
-          The work included numerical approaches to
-          approximating matrix-related quantities.
+          The work included numerical approaches to approximating
+          matrix-related quantities.
         </p>
 
-        <a class="inline-link" href="/research/">
+        <a class="text-link" href="/research/">
           See research experience ↗
         </a>
       </div>
     </section>
 
-    <!-- BEYOND RESEARCH -->
-    <section class="content-section two-col">
-      <div>
-        <p class="eyebrow">BEYOND RESEARCH</p>
-
+    <!-- SPEEDCUBING -->
+    <section class="about-section split-section">
+      <div class="section-heading">
+        <p class="about-label">BEYOND RESEARCH</p>
         <h2>Speedcubing &amp; mathematical puzzles</h2>
       </div>
 
-      <div class="prose-block">
+      <div class="section-content">
         <p>
           Speedcubing sparked my interest in the relationship
           between mathematical structure and computational
           problem-solving.
-          I served as Instructor &amp; Head of the Cubing
-          and Puzzle Wing at SUST Science Arena
+          I served as Instructor &amp; Head of the Cubing and
+          Puzzle Wing at SUST Science Arena
           (February 2023–March 2024), organizing workshops
           and mentoring students.
         </p>
 
-        <ul>
+        <ul class="awards-list">
           {awards.map((award) => (
             <li>{award}</li>
           ))}
@@ -255,31 +254,30 @@ const awards = [
           the Rubik's Cube as an application of group theory.
         </p>
 
-        <a class="inline-link" href="/blog/">
+        <a class="text-link" href="/blog/">
           Explore mathematical writing ↗
         </a>
       </div>
     </section>
 
     <!-- ACADEMIC CV -->
-    <section class="cta-band">
+    <section class="about-cv">
       <div>
-        <p class="eyebrow">PROFILE</p>
-
-        <h2>Read my complete academic CV.</h2>
-
+        <p class="about-label">ACADEMIC PROFILE</p>
+        <h2>Academic curriculum vitae</h2>
         <p>
-          Experience, projects, talks, skills, and achievements.
+          Education, research, professional experience,
+          presentations, and technical skills.
         </p>
       </div>
 
       <a
-        class="btn btn-primary"
         href="/Md_Arif_Hossain_CV.pdf"
         target="_blank"
         rel="noopener noreferrer"
+        class="cv-button"
       >
-        Download CV ↗
+        View CV ↗
       </a>
     </section>
 
@@ -287,25 +285,370 @@ const awards = [
 </BaseLayout>
 
 <style>
-  .organization-links {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.35rem;
-    margin-top: 0.75rem;
+  /* ---------------------------------
+     ABOUT PAGE: MINIMAL GLOBAL THEME
+     --------------------------------- */
+
+  .about-page {
+    width: min(970px, calc(100% - 2.5rem));
+    margin: 0 auto;
+    padding: 48px 0 70px;
+    color: var(--color-text, #ececec);
+    font-family: Arial, Helvetica, sans-serif;
   }
 
-  .link-separator {
-    color: var(--color-text-subtle);
+  .about-page * {
+    box-sizing: border-box;
   }
 
-  .organization-links a {
-    font-size: 0.9rem;
-    font-weight: 500;
+  .about-page a {
+    color: #39aad8;
     text-decoration: none;
+    text-underline-offset: 3px;
   }
 
-  .organization-links a:hover {
+  .about-page a:hover {
+    color: #7fd9f2;
     text-decoration: underline;
+  }
+
+  /* ---------------------------------
+     SMALL SECTION LABELS
+     --------------------------------- */
+
+  .about-label {
+    margin: 0 0 12px;
+    color: #39aad8;
+    font-size: 0.74rem;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  /* ---------------------------------
+     INTRODUCTION
+     --------------------------------- */
+
+  .about-hero {
+    max-width: 850px;
+    padding: 0 0 42px;
+  }
+
+  .about-hero h1 {
+    margin: 0 0 19px;
+    color: #ececec;
+    font-size: clamp(2.2rem, 4vw, 2.8rem);
+    font-weight: 400;
+    line-height: 1.22;
+    letter-spacing: -0.04em;
+  }
+
+  .about-hero h1 em {
+    font-style: normal;
+    color: #39aad8;
+  }
+
+  .about-lead {
+    max-width: 770px;
+    margin: 0;
+    color: #d0d0d0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.7;
+  }
+
+  /* ---------------------------------
+     SECTION SPACING
+     --------------------------------- */
+
+  .about-section {
+    border-top: 1px solid #383838;
+    padding: 38px 0 42px;
+  }
+
+  .split-section {
+    display: grid;
+    grid-template-columns: 210px minmax(0, 1fr);
+    gap: 38px;
+    align-items: start;
+  }
+
+  .section-heading {
+    min-width: 0;
+  }
+
+  .section-heading h2,
+  .about-cv h2 {
+    margin: 0;
+    color: #ececec;
+    font-size: clamp(1.5rem, 2.8vw, 1.85rem);
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: -0.025em;
+  }
+
+  /* ---------------------------------
+     PARAGRAPHS AND TEXT
+     --------------------------------- */
+
+  .section-content {
+    min-width: 0;
+    max-width: 710px;
+  }
+
+  .section-content p {
+    margin: 0 0 17px;
+    color: #d0d0d0;
+    font-size: 1rem;
+    line-height: 1.72;
+  }
+
+  .section-content p:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .section-content strong {
+    color: #ececec;
+    font-weight: 650;
+  }
+
+  .section-content h3 {
+    margin: 0 0 14px;
+    color: #ececec;
+    font-size: 1.12rem;
+    font-weight: 600;
+    line-height: 1.45;
+  }
+
+  .text-link {
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 0.93rem;
+    font-weight: 500;
+  }
+
+  /* ---------------------------------
+     MILESTONES
+     --------------------------------- */
+
+  .milestones-section .section-heading {
+    margin-bottom: 20px;
+  }
+
+  .timeline-list {
+    border-top: 1px solid #383838;
+  }
+
+  .milestone {
+    display: grid;
+    grid-template-columns: 175px minmax(0, 1fr);
+    gap: 30px;
+    padding: 24px 0;
+    border-bottom: 1px solid #383838;
+  }
+
+  .milestone:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .milestone-period {
+    padding-top: 3px;
+    color: #39aad8;
+    font-size: 0.91rem;
+    line-height: 1.5;
+  }
+
+  .milestone-content {
+    min-width: 0;
+    max-width: 720px;
+  }
+
+  .milestone-label {
+    display: block;
+    margin-bottom: 7px;
+    color: #a6a6a6;
+    font-size: 0.73rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .milestone-content h3 {
+    margin: 0 0 5px;
+    color: #ececec;
+    font-size: 1.12rem;
+    font-weight: 600;
+    line-height: 1.45;
+  }
+
+  .milestone-content p {
+    margin: 0 0 10px;
+    color: #d0d0d0;
+    font-size: 0.96rem;
+    line-height: 1.68;
+  }
+
+  .milestone-content .milestone-sub {
+    color: #ababab;
+    font-size: 0.91rem;
+  }
+
+  .milestone-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    font-size: 0.91rem;
+    line-height: 1.6;
+  }
+
+  .milestone-links span {
+    color: #8f8f8f;
+  }
+
+  /* ---------------------------------
+     AWARDS LIST
+     --------------------------------- */
+
+  .awards-list {
+    margin: 8px 0 19px;
+    padding-left: 21px;
+    color: #d0d0d0;
+    font-size: 0.96rem;
+    line-height: 1.75;
+    list-style: disc;
+  }
+
+  .awards-list li {
+    padding-left: 3px;
+    margin-bottom: 5px;
+  }
+
+  /* ---------------------------------
+     ACADEMIC CV
+     --------------------------------- */
+
+  .about-cv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    padding: 38px 0 0;
+    border-top: 1px solid #383838;
+  }
+
+  .about-cv .about-label {
+    margin-bottom: 8px;
+  }
+
+  .about-cv p:not(.about-label) {
+    margin: 10px 0 0;
+    color: #bcbcbc;
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+
+  .cv-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    min-height: 42px;
+    padding: 10px 17px;
+    border: 1px solid #39aad8;
+    border-radius: 5px;
+    font-size: 0.93rem;
+    font-weight: 600;
+    line-height: 1.4;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .cv-button:hover {
+    background: #39aad8;
+    color: #1b1b1b !important;
+    text-decoration: none !important;
+  }
+
+  /* ---------------------------------
+     TABLET
+     --------------------------------- */
+
+  @media (max-width: 780px) {
+    .about-page {
+      padding-top: 38px;
+    }
+
+    .split-section {
+      grid-template-columns: 165px minmax(0, 1fr);
+      gap: 25px;
+    }
+
+    .milestone {
+      grid-template-columns: 140px minmax(0, 1fr);
+      gap: 20px;
+    }
+  }
+
+  /* ---------------------------------
+     MOBILE
+     --------------------------------- */
+
+  @media (max-width: 620px) {
+    .about-page {
+      width: calc(100% - 2rem);
+      padding: 32px 0 50px;
+    }
+
+    .about-hero {
+      padding-bottom: 32px;
+    }
+
+    .about-hero h1 {
+      font-size: clamp(2rem, 7vw, 2.45rem);
+    }
+
+    .about-section {
+      padding: 29px 0 33px;
+    }
+
+    .split-section {
+      grid-template-columns: 1fr;
+      gap: 19px;
+    }
+
+    .milestones-section .section-heading {
+      margin-bottom: 18px;
+    }
+
+    .milestone {
+      grid-template-columns: 1fr;
+      gap: 8px;
+      padding: 21px 0;
+    }
+
+    .milestone-period {
+      padding-top: 0;
+    }
+
+    .about-cv {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 18px;
+      padding-top: 29px;
+    }
+
+    .section-content p,
+    .about-lead {
+      font-size: 0.96rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cv-button {
+      transition: none;
+    }
   }
 </style>
