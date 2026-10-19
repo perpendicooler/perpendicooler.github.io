@@ -3,7 +3,7 @@ title: 'From Factory Data to Decisions: Operations Research in Bangladesh''s Kni
   Manufacturing'
 description: A practitioner perspective on SMV prediction, capacity allocation, overtime
   scenarios, machine efficiency, cost variance, utilities, and decision-support systems.
-pubDate: '2026-10-18'
+pubDate: '2026-09-10'
 tags:
 - Operations Research
 - Manufacturing Analytics
