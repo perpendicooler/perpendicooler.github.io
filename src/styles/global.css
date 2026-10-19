@@ -537,9 +537,8 @@ select {
   border-color: #383838;
 }
 
-/* 12. MATCH THE MINIMAL HOMEPAGE FOOTER */
-.site-footer,
-.back-to-top {
+/* 12. HIDE FOOTER, KEEP BACK TO TOP BUTTON */
+.site-footer {
   display: none !important;
 }
 
