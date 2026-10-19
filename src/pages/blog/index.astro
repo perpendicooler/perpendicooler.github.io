@@ -6,27 +6,27 @@ import { slugifyTag } from '../../utils/tags';
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-// These are the exact lead images already used within the five blog articles.
-// Keep the Writing thumbnail and each article's lead image in sync.
+// Use the SAME existing animated SVG as the lead image in each article.
+// Keep the thumbnail and the article lead image in sync.
 const visuals: Record<string, { src: string; alt: string }> = {
   'operations-research-bangladesh-manufacturing': {
-    src: '/images/blog/manufacturing-analytics-flow.svg',
+    src: '/images/blog/manufacturing-flow-animated.svg',
     alt: 'From manufacturing data to decisions: observe, predict, optimize, validate',
   },
   'tic-tac-toe-extensive-form-game-theory': {
-    src: '/images/blog/tictactoe-game-tree.svg',
+    src: '/images/blog/tic-tac-toe-game-animated.svg',
     alt: 'Tic-Tac-Toe as an extensive-form game tree',
   },
   'minimax-alpha-beta-pruning-python': {
-    src: '/images/blog/minimax-alpha-beta.svg',
+    src: '/images/blog/minimax-pruning-animated.svg',
     alt: 'Minimax decision tree with an illustrative pruned branch',
   },
   'tictactoe-symmetry-burnsides-lemma': {
-    src: '/images/blog/tictactoe-symmetry.svg',
+    src: '/images/blog/symmetry-burnside-animated.svg',
     alt: 'A Tic-Tac-Toe board under rotations and reflections',
   },
   'rubiks-cube-group-theory-combinatorics': {
-    src: '/images/blog/Rubiks_Cube.svg',
+    src: '/images/blog/rubiks-group-animated.svg',
     alt: 'Rubik’s Cube illustration demonstrating a permutation puzzle',
   },
 };
