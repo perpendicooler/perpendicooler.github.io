@@ -6,27 +6,28 @@ import { slugifyTag } from '../../utils/tags';
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-// Five purpose-made lightweight SVG animations, hosted within your own website.
+// These are the exact lead images already used within the five blog articles.
+// Keep the Writing thumbnail and each article's lead image in sync.
 const visuals: Record<string, { src: string; alt: string }> = {
   'operations-research-bangladesh-manufacturing': {
-    src: '/images/blog/manufacturing-flow-animated.svg',
-    alt: 'Animated knitwear production flow showing a linking bottleneck and throughput trend',
+    src: '/images/blog/manufacturing-analytics-flow.svg',
+    alt: 'From manufacturing data to decisions: observe, predict, optimize, validate',
   },
   'tic-tac-toe-extensive-form-game-theory': {
-    src: '/images/blog/tic-tac-toe-game-animated.svg',
-    alt: 'Animated Tic-Tac-Toe positions beside a branching extensive-form game tree',
+    src: '/images/blog/tictactoe-game-tree.svg',
+    alt: 'Tic-Tac-Toe as an extensive-form game tree',
   },
   'minimax-alpha-beta-pruning-python': {
-    src: '/images/blog/minimax-pruning-animated.svg',
-    alt: 'Minimax decision tree with animated highlights showing pruned branches',
+    src: '/images/blog/minimax-alpha-beta.svg',
+    alt: 'Minimax decision tree with an illustrative pruned branch',
   },
   'tictactoe-symmetry-burnsides-lemma': {
-    src: '/images/blog/symmetry-burnside-animated.svg',
-    alt: 'Animated rotation relating equivalent square patterns under symmetry',
+    src: '/images/blog/tictactoe-symmetry.svg',
+    alt: 'A Tic-Tac-Toe board under rotations and reflections',
   },
   'rubiks-cube-group-theory-combinatorics': {
-    src: '/images/blog/rubiks-group-animated.svg',
-    alt: 'Animated colorful three-dimensional Rubik’s Cube illustration',
+    src: '/images/blog/Rubiks_Cube.svg',
+    alt: 'Rubik’s Cube illustration demonstrating a permutation puzzle',
   },
 };
 ---
@@ -141,7 +142,7 @@ const visuals: Record<string, { src: string; alt: string }> = {
     overflow: hidden;
     border: 1px solid var(--color-border);
     border-radius: 9px;
-    background: var(--color-surface);
+    background: #0f2031;
     text-decoration: none;
     isolation: isolate;
   }
@@ -150,7 +151,7 @@ const visuals: Record<string, { src: string; alt: string }> = {
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     transition: transform 330ms ease, filter 330ms ease;
   }
 
