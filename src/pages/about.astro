@@ -349,21 +349,26 @@ const skillGroups: { title: string; icons: SkillIcon[] }[] = [
                     ]}
                     role="img"
                     aria-label={skill.name}
+                    title={skill.name}
                     data-name={skill.name}
                     tabindex="0"
                   >
-                    {skill.src ? (
+                    {skill.src && (
                       <img
                         src={skill.src}
                         alt=""
                         loading="lazy"
                         decoding="async"
+                        onerror="this.hidden = true; this.nextElementSibling.hidden = false;"
                       />
-                    ) : (
-                      <span class="tech-symbol" aria-hidden="true">
-                        {skill.symbol}
-                      </span>
                     )}
+                    <span
+                      class="tech-symbol"
+                      aria-hidden="true"
+                      hidden={Boolean(skill.src)}
+                    >
+                      {skill.symbol || skill.name.substring(0, 3)}
+                    </span>
                   </span>
                 </li>
               ))}
@@ -428,6 +433,11 @@ const skillGroups: { title: string; icons: SkillIcon[] }[] = [
 
 /* MINIMAL TECHNICAL SKILLS ICON GRID */
 
+#technical-skills {
+  scroll-margin-top: 90px;
+}
+
+
 .tech-icon-groups {
   min-width: 0;
   display: flex;
@@ -478,6 +488,11 @@ const skillGroups: { title: string; icons: SkillIcon[] }[] = [
   outline-offset: 2px;
 }
 
+.tech-tile img[hidden],
+.tech-tile .tech-symbol[hidden] {
+  display: none !important;
+}
+
 .tech-tile img {
   display: block;
   width: 34px;
@@ -490,6 +505,7 @@ const skillGroups: { title: string; icons: SkillIcon[] }[] = [
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--color-accent);
+  text-align: center;
 }
 
 /* Keep monochrome brand icons visible in dark mode */
