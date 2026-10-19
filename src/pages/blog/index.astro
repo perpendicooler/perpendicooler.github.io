@@ -6,80 +6,85 @@ import { slugifyTag } from '../../utils/tags';
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-// These illustrations already exist in public/images/blog/.
-// Only update the paths if you rename or replace those files.
-const illustrations: Record<string, { src: string; alt: string }> = {
+// Five purpose-made lightweight SVG animations, hosted within your own website.
+const visuals: Record<string, { src: string; alt: string }> = {
   'operations-research-bangladesh-manufacturing': {
-    src: '/images/blog/manufacturing-analytics-flow.svg',
-    alt: 'Diagram of factory data flowing toward manufacturing decisions',
+    src: '/images/blog/manufacturing-flow-animated.svg',
+    alt: 'Animated knitwear production flow showing a linking bottleneck and throughput trend',
   },
   'tic-tac-toe-extensive-form-game-theory': {
-    src: '/images/blog/tictactoe-game-tree.svg',
-    alt: 'Illustration of a Tic-Tac-Toe game tree',
+    src: '/images/blog/tic-tac-toe-game-animated.svg',
+    alt: 'Animated Tic-Tac-Toe positions beside a branching extensive-form game tree',
   },
   'minimax-alpha-beta-pruning-python': {
-    src: '/images/blog/minimax-alpha-beta.svg',
-    alt: 'Minimax game tree illustrating alpha-beta pruning',
+    src: '/images/blog/minimax-pruning-animated.svg',
+    alt: 'Minimax decision tree with animated highlights showing pruned branches',
   },
   'tictactoe-symmetry-burnsides-lemma': {
-    src: '/images/blog/tictactoe-symmetry.svg',
-    alt: 'Geometric symmetry transformations of a Tic-Tac-Toe board',
+    src: '/images/blog/symmetry-burnside-animated.svg',
+    alt: 'Animated rotation relating equivalent square patterns under symmetry',
   },
   'rubiks-cube-group-theory-combinatorics': {
-    src: '/images/blog/Rubiks_Cube.svg',
-    alt: 'Isometric Rubik’s Cube representing permutations and group theory',
+    src: '/images/blog/rubiks-group-animated.svg',
+    alt: 'Animated colorful three-dimensional Rubik’s Cube illustration',
   },
 };
 ---
 
 <BaseLayout
   title="Writing | Md Arif Hossain"
-  description="Academic essays on group theory, combinatorics, minimax, game theory, and manufacturing operations research."
+  description="Research-oriented writing on operations research, manufacturing analytics, combinatorics, games, algorithms, and group theory."
 >
-  <div class="container page-shell">
+  <div class="container page-shell writing-page">
     <header class="page-header">
       <p class="eyebrow">WRITING / NOTES &amp; ESSAYS</p>
       <h1>Mathematics, algorithms, <em>and the world they model.</em></h1>
       <p class="page-lead">
-        Expository notes and technical essays on combinatorics, group theory,
-        adversarial algorithms, and data-driven operational planning.
+        Research reflections, mathematical explanations, and computational experiments.
       </p>
     </header>
 
-    <section class="content-section" aria-label="Articles">
+    <section class="content-section" aria-label="Articles and essays">
       <div class="writing-list">
         {posts.map((post) => {
           const href = `/blog/${post.id}/`;
-          const artwork = illustrations[post.id];
-
+          const visual = visuals[post.id];
           return (
-            <article class="writing-entry illustrated-entry">
-              <div class="entry-copy">
+            <article class="writing-entry writing-entry-visual">
+              <div class="writing-copy">
                 <p class="mini-label">
-                  {post.data.pubDate.toLocaleDateString('en-GB', {
-                    day: 'numeric', month: 'long', year: 'numeric'
-                  })}
+                  <time datetime={post.data.pubDate.toISOString()}>
+                    {post.data.pubDate.toLocaleDateString('en-GB', {
+                      day: 'numeric', month: 'long', year: 'numeric',
+                    })}
+                  </time>
                 </p>
+
                 <h2><a href={href}>{post.data.title}</a></h2>
-                <p class="entry-description">{post.data.description}</p>
-                <div class="tag-row" aria-label="Topics">
+                <p class="writing-summary">{post.data.description}</p>
+
+                <div class="tag-row">
                   {post.data.tags.map((tag) => (
                     <a class="tag-pill" href={`/blog/tags/${slugifyTag(tag)}/`}>{tag}</a>
                   ))}
                 </div>
               </div>
 
-              {artwork && (
-                <a class="entry-visual" href={href} aria-label={`Read ${post.data.title}`}>
+              {visual && (
+                <a
+                  class="writing-thumbnail"
+                  href={href}
+                  aria-label={`Read article: ${post.data.title}`}
+                >
                   <img
-                    src={artwork.src}
-                    alt={artwork.alt}
+                    src={visual.src}
+                    alt={visual.alt}
+                    width="640"
+                    height="360"
                     loading="lazy"
                     decoding="async"
-                    width="1200"
-                    height="640"
                   />
-                  <span class="visual-arrow" aria-hidden="true">↗</span>
+                  <span class="thumbnail-arrow" aria-hidden="true">↗</span>
                 </a>
               )}
             </article>
@@ -91,131 +96,123 @@ const illustrations: Record<string, { src: string; alt: string }> = {
 </BaseLayout>
 
 <style>
-  /* Applied only to the Writing page; existing site CSS stays unchanged. */
-  .illustrated-entry {
+  .writing-entry-visual {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 245px;
+    grid-template-columns: minmax(0, 1fr) 242px;
     align-items: center;
-    gap: clamp(1.25rem, 3vw, 2.5rem);
-    padding: 2.1rem 0.3rem;
+    gap: 30px;
+    padding: 30px 4px;
   }
 
-  .entry-copy {
+  .writing-copy {
     min-width: 0;
   }
 
-  .entry-copy h2 {
-    margin: 0.3rem 0 0.55rem;
-    font-size: clamp(1.22rem, 2.3vw, 1.75rem);
-    line-height: 1.3;
+  .writing-entry-visual h2 {
+    margin: 5px 0 10px;
+    font-size: clamp(1.25rem, 2.25vw, 1.8rem);
     font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: -0.026em;
   }
 
-  .entry-copy h2 a {
-    color: var(--color-text);
-    text-decoration: none;
+  .writing-entry-visual .mini-label {
+    margin: 0;
   }
 
-  .entry-copy h2 a:hover {
-    color: var(--color-accent);
-  }
-
-  .entry-description {
+  .writing-entry-visual .writing-summary {
+    max-width: 650px;
     margin: 0;
     color: var(--color-text-muted);
-    font-size: 0.94rem;
+    font-size: .93rem;
     line-height: 1.65;
   }
 
-  .entry-copy .tag-row {
-    margin-bottom: 0;
+  .writing-entry-visual .tag-row {
+    margin: 14px 0 0;
+    gap: 6px;
   }
 
-  .entry-visual {
+  .writing-thumbnail {
     position: relative;
     display: block;
-    overflow: hidden;
     width: 100%;
     aspect-ratio: 16 / 9;
+    overflow: hidden;
     border: 1px solid var(--color-border);
-    border-radius: 8px;
+    border-radius: 9px;
     background: var(--color-surface);
+    text-decoration: none;
     isolation: isolate;
-    box-shadow: none;
-    transition: transform 240ms ease, border-color 240ms ease, box-shadow 240ms ease;
   }
 
-  .entry-visual img {
+  .writing-thumbnail img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 420ms ease;
+    transition: transform 330ms ease, filter 330ms ease;
   }
 
-  .visual-arrow {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    display: grid;
-    place-items: center;
-    width: 28px;
-    height: 28px;
-    border-radius: 6px;
-    background: rgb(10 23 35 / 78%);
-    color: #ffffff;
-    font-size: 1rem;
-    line-height: 1;
-    transition: transform 240ms ease;
-  }
-
-  .illustrated-entry:hover .entry-visual,
-  .entry-visual:focus-visible {
-    transform: translateY(-3px);
-    border-color: var(--color-accent);
-    box-shadow: 0 8px 24px rgb(0 0 0 / 12%);
-  }
-
-  .illustrated-entry:hover .entry-visual img,
-  .entry-visual:focus-visible img {
+  .writing-thumbnail:hover img,
+  .writing-thumbnail:focus-visible img {
     transform: scale(1.045);
+    filter: brightness(1.13);
   }
 
-  .illustrated-entry:hover .visual-arrow,
-  .entry-visual:focus-visible .visual-arrow {
-    transform: translate(2px, -2px);
-  }
-
-  .entry-visual:focus-visible {
+  .writing-thumbnail:focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 3px;
   }
 
-  @media (max-width: 740px) {
-    .illustrated-entry {
+  .thumbnail-arrow {
+    position: absolute;
+    right: 10px;
+    bottom: 9px;
+    display: grid;
+    place-items: center;
+    width: 27px;
+    height: 27px;
+    border: 1px solid rgb(150 223 247 / 30%);
+    border-radius: 6px;
+    background: rgb(12 30 44 / 85%);
+    color: #9de5fa;
+    font-size: 18px;
+    line-height: 1;
+    transition: transform 200ms ease;
+  }
+
+  .writing-thumbnail:hover .thumbnail-arrow {
+    transform: translate(2px, -2px);
+  }
+
+  @media (max-width: 800px) {
+    .writing-entry-visual {
+      grid-template-columns: minmax(0, 1fr) 192px;
+      gap: 18px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .writing-entry-visual {
       grid-template-columns: 1fr;
-      gap: 1.1rem;
+      gap: 16px;
+      padding: 24px 3px;
     }
 
-    .entry-visual {
-      max-width: 420px;
+    .writing-thumbnail {
+      width: min(100%, 355px);
+    }
+
+    .writing-entry-visual h2 {
+      font-size: 1.35rem;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .entry-visual,
-    .entry-visual img,
-    .visual-arrow {
+    .writing-thumbnail img,
+    .thumbnail-arrow {
       transition: none;
-    }
-
-    .illustrated-entry:hover .entry-visual,
-    .entry-visual:focus-visible,
-    .illustrated-entry:hover .entry-visual img,
-    .entry-visual:focus-visible img,
-    .illustrated-entry:hover .visual-arrow,
-    .entry-visual:focus-visible .visual-arrow {
-      transform: none;
     }
   }
 </style>
