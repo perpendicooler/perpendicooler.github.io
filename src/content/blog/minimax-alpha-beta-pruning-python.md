@@ -15,7 +15,7 @@ draft: false
 
 *By Md Arif Hossain · Mathematical algorithms and implementation*
 
-![A minimax search tree with an illustrative pruned branch](/images/blog/minimax-alpha-beta.svg)
+![A minimax search tree with an illustrative pruned branch](/images/blog/minimax-pruning-animated.svg)
 
 How should an algorithm make a decision when another intelligent decision-maker is actively trying to defeat it? Traditional optimization often assumes the environment is fixed or stochastic. Adversarial search adds another ingredient: the next action may be selected by an opponent who pursues an opposing objective. The **minimax algorithm** addresses this situation by evaluating each possible decision under the assumption that future opposition will act optimally against us. **Alpha–beta pruning** makes the search more efficient by eliminating branches that cannot alter the eventual decision.
 
