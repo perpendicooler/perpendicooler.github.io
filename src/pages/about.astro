@@ -264,91 +264,52 @@ const awards = [
     >
       <div>
         <p class="eyebrow">TECHNICAL BACKGROUND</p>
-        <h2 id="technical-skills-heading">
-          Technical skills
-        </h2>
+        <h2 id="technical-skills-heading">Technical skills</h2>
       </div>
     
-      <div class="technical-content">
-        <p class="technical-intro">
-          My technical background combines mathematical
-          modeling, computational methods, machine learning,
-          and business intelligence, with applications to
-          production planning and operational decision-making.
-        </p>
+      <div class="tech-icon-groups">
+        {skillGroups.map((group) => (
+          <div class="tech-icon-group">
+            <h3>{group.title}</h3>
     
-        <div class="technical-groups">
-    
-          <div class="technical-group">
-            <h3>Optimization &amp; Mathematical Modeling</h3>
-            <p>
-              Linear Programming, Mixed-Integer Programming,
-              Combinatorial Optimization, Set Covering,
-              Facility Location, Traveling Salesperson Problem,
-              Gurobi, PuLP, and NetworkX.
-            </p>
+            <ul class="tech-icon-grid">
+              {group.icons.map((skill) => (
+                <li>
+                  <span
+                    class:list={[
+                      "tech-tile",
+                      { "tech-mono": skill.mono },
+                    ]}
+                    role="img"
+                    aria-label={skill.name}
+                    title={skill.name}
+                    data-name={skill.name}
+                    tabindex="0"
+                  >
+                    {skill.src ? (
+                      <img
+                        src={skill.src}
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    ) : (
+                      <span class="tech-symbol" aria-hidden="true">
+                        {skill.symbol}
+                      </span>
+                    )}
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
+        ))}
     
-          <div class="technical-group">
-            <h3>Programming &amp; Scientific Computing</h3>
-            <p>
-              Python, pandas, NumPy, SciPy, SQL,
-              MATLAB, and R (basic).
-            </p>
-          </div>
-    
-          <div class="technical-group">
-            <h3>Machine Learning &amp; Statistical Modeling</h3>
-            <p>
-              scikit-learn, XGBoost, Random Forest,
-              Regression Analysis, Predictive Modeling,
-              and Model Evaluation.
-            </p>
-          </div>
-    
-          <div class="technical-group">
-            <h3>Business Intelligence &amp; Visualization</h3>
-            <p>
-              Tableau, Power BI, DAX, Advanced Excel,
-              Matplotlib, and Seaborn.
-            </p>
-          </div>
-    
-          <div class="technical-group">
-            <h3>Research &amp; Development Tools</h3>
-            <p>
-              Jupyter Notebook, Streamlit, Git,
-              GitHub, LaTeX, HTML, and CSS.
-            </p>
-          </div>
-    
-        </div>
-    
-        <div class="technical-applications">
-          <h3>Applied Analytical Experience</h3>
-    
-          <p>
-            Production performance monitoring, bottleneck
-            identification, capacity planning, machine-wise
-            style allocation, machine efficiency analysis,
-            and overtime feasibility.
-          </p>
-    
-          <p>
-            Workforce subsidy governance, financial resource
-            allocation, free fund management, OPEX analysis,
-            costing-versus-actual variance, and utility
-            consumption analytics.
-          </p>
-    
-          <a class="inline-link" href="/projects/">
-            Explore selected projects ↗
-          </a>
-        </div>
-    
+        <a class="inline-link" href="/projects/">
+          Explore applied projects ↗
+        </a>
       </div>
     </section>
-
 
 
 
