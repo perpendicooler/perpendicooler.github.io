@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-label="Animated tic tac toe board and branching game tree">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#152735"/><stop offset="1" stop-color="#0d1824"/></linearGradient>
+    <radialGradient id="halo"><stop offset="0" stop-color="#2a97a5" stop-opacity=".19"/><stop offset="1" stop-color="#2a97a5" stop-opacity="0"/></radialGradient>
+    <pattern id="dots" width="23" height="23" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".9" fill="#52788a" opacity=".33"/></pattern>
+    <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <style>
+    .caption{font:700 13px Arial,sans-serif;letter-spacing:2px;fill:#95c9de}
+    .sub{font:500 12px Arial,sans-serif;fill:#9fb7c4}
+    .cell{fill:#182f3e;stroke:#42647a;stroke-width:1.5}
+    .cyan{stroke:#51d6f5;fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+    .mint{stroke:#79e3b1;fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+    .orange{stroke:#ffca79;fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+    .flowline{stroke-dasharray:8 12;animation:flowline 1.8s linear infinite}
+    @keyframes flowline{to{stroke-dashoffset:-40}}
+    @keyframes pulse{0%,100%{opacity:.45}50%{opacity:1}}
+    @keyframes pop{0%,12%{opacity:0;transform:scale(.7)}25%,80%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1)}}
+    @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-11px)}}
+    @keyframes rotateSymbol{to{transform:rotate(360deg)}}
+    @keyframes glowline{0%,100%{opacity:.22}50%{opacity:1}}
+    @keyframes dash{to{stroke-dashoffset:-50}}
+    @keyframes pulseMark{0%,100%{opacity:.25}50%{opacity:1}}
+    @keyframes turnCube{0%,100%{transform:translateY(3px) rotate(-2deg)}50%{transform:translateY(-10px) rotate(4deg)}}
+    
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+  </style>
+  <rect x="1" y="1" width="638" height="358" rx="16" fill="url(#bg)" stroke="#294355" stroke-width="2"/>
+  <circle cx="475" cy="150" r="225" fill="url(#halo)"/>
+  <rect x="16" y="16" width="608" height="328" rx="12" fill="url(#dots)"/>
+  <text x="30" y="40" class="caption">GAME THEORY  /  EXTENSIVE FORM</text><path d="M435 95V269 M377 153H551" stroke="#47697e" stroke-width="4" stroke-linecap="round"/><path d="M493 95V269 M377 211H551" stroke="#47697e" stroke-width="4" stroke-linecap="round"/><g style="transform-origin:406px 124px;animation:pop 6.2s 0.0s ease-in-out infinite"><path d="M391 109l30 30m0-30l-30 30" stroke="#51d6f5" stroke-width="5" fill="none" stroke-linecap="round"/></g><g style="transform-origin:464px 182px;animation:pop 6.2s 0.65s ease-in-out infinite"><circle cx="464" cy="182" r="17" fill="none" stroke="#ffca79" stroke-width="5"/></g><g style="transform-origin:406px 240px;animation:pop 6.2s 1.3s ease-in-out infinite"><path d="M391 225l30 30m0-30l-30 30" stroke="#51d6f5" stroke-width="5" fill="none" stroke-linecap="round"/></g><g style="transform-origin:522px 124px;animation:pop 6.2s 1.9500000000000002s ease-in-out infinite"><circle cx="522" cy="124" r="17" fill="none" stroke="#ffca79" stroke-width="5"/></g><g style="transform-origin:522px 240px;animation:pop 6.2s 2.6s ease-in-out infinite"><path d="M507 225l30 30m0-30l-30 30" stroke="#51d6f5" stroke-width="5" fill="none" stroke-linecap="round"/></g><path d="M145 99L88 165M145 99L203 165M88 165L48 233M88 165L121 233M203 165L164 233M203 165L241 233" fill="none" stroke="#47738a" stroke-width="3"/>
+<g fill="#193648" stroke="#51d6f5" stroke-width="3"><circle cx="145" cy="98" r="19"/><circle cx="88" cy="165" r="17"/><circle cx="203" cy="165" r="17"/></g>
+<g fill="#183549" stroke="#79e3b1" stroke-width="2"><circle cx="48" cy="233" r="13"/><circle cx="121" cy="233" r="13"/><circle cx="164" cy="233" r="13"/><circle cx="241" cy="233" r="13"/></g>
+<path d="M145 99L88 165L121 233" stroke="#ffca79" stroke-width="4" fill="none" stroke-linecap="round" style="animation:pulseMark 3s ease-in-out infinite"/>
+<text x="51" y="277" font-family="Arial" font-size="13" fill="#99b9c7">Decision tree</text><text x="383" y="306" font-family="Arial" font-size="13" fill="#99b9c7">Alternating moves</text>
+</svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-label="Animated minimax tree showing alpha beta pruned branches">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#152735"/><stop offset="1" stop-color="#0d1824"/></linearGradient>
+    <radialGradient id="halo"><stop offset="0" stop-color="#2a97a5" stop-opacity=".19"/><stop offset="1" stop-color="#2a97a5" stop-opacity="0"/></radialGradient>
+    <pattern id="dots" width="23" height="23" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".9" fill="#52788a" opacity=".33"/></pattern>
+    <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <style>
+    .caption{font:700 13px Arial,sans-serif;letter-spacing:2px;fill:#95c9de}
+    .sub{font:500 12px Arial,sans-serif;fill:#9fb7c4}
+    .cell{fill:#182f3e;stroke:#42647a;stroke-width:1.5}
+    .cyan{stroke:#51d6f5;fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+    .mint{stroke:#79e3b1;fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+    .orange{stroke:#ffca79;fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+    .flowline{stroke-dasharray:8 12;animation:flowline 1.8s linear infinite}
+    @keyframes flowline{to{stroke-dashoffset:-40}}
+    @keyframes pulse{0%,100%{opacity:.45}50%{opacity:1}}
+    @keyframes pop{0%,12%{opacity:0;transform:scale(.7)}25%,80%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1)}}
+    @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-11px)}}
+    @keyframes rotateSymbol{to{transform:rotate(360deg)}}
+    @keyframes glowline{0%,100%{opacity:.22}50%{opacity:1}}
+    @keyframes dash{to{stroke-dashoffset:-50}}
+    @keyframes pulseMark{0%,100%{opacity:.25}50%{opacity:1}}
+    @keyframes turnCube{0%,100%{transform:translateY(3px) rotate(-2deg)}50%{transform:translateY(-10px) rotate(4deg)}}
+    
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+  </style>
+  <rect x="1" y="1" width="638" height="358" rx="16" fill="url(#bg)" stroke="#294355" stroke-width="2"/>
+  <circle cx="475" cy="150" r="225" fill="url(#halo)"/>
+  <rect x="16" y="16" width="608" height="328" rx="12" fill="url(#dots)"/>
+  <text x="30" y="40" class="caption">MINIMAX  /  ALPHA-BETA PRUNING</text><text x="30" y="65" class="sub">Choosing optimal moves by eliminating branches</text><path d="M317 106L174 169" stroke="#4daac5" stroke-width="3" fill="none" stroke-dasharray="none" opacity="0.9"/><path d="M317 106L459 169" stroke="#4daac5" stroke-width="3" fill="none" stroke-dasharray="none" opacity="0.9"/><path d="M174 169L103 242" stroke="#4daac5" stroke-width="3" fill="none" stroke-dasharray="none" opacity="0.9"/><path d="M174 169L245 242" stroke="#4daac5" stroke-width="3" fill="none" stroke-dasharray="none" opacity="0.9"/><path d="M459 169L389 242" stroke="#f1ba73" stroke-width="3" fill="none" stroke-dasharray="7 8" opacity="0.35"/><path d="M459 169L531 242" stroke="#f1ba73" stroke-width="3" fill="none" stroke-dasharray="7 8" opacity="0.35"/><circle cx="317" cy="106" r="25" fill="#173244" stroke="#51d6f5" stroke-width="3"/><text x="317" y="111" text-anchor="middle" font-family="Arial" font-weight="700" font-size="13" fill="#e9f2f6">MAX</text><circle cx="174" cy="169" r="25" fill="#173244" stroke="#79e3b1" stroke-width="3"/><text x="174" y="174" text-anchor="middle" font-family="Arial" font-weight="700" font-size="13" fill="#e9f2f6">MIN</text><circle cx="459" cy="169" r="25" fill="#173244" stroke="#ffca79" stroke-width="3"/><text x="459" y="174" text-anchor="middle" font-family="Arial" font-weight="700" font-size="13" fill="#e9f2f6">MIN</text><circle cx="103" cy="242" r="25" fill="#173244" stroke="#79e3b1" stroke-width="3"/><text x="103" y="247" text-anchor="middle" font-family="Arial" font-weight="700" font-size="13" fill="#e9f2f6">3</text><circle cx="245" cy="242" r="25" fill="#173244" stroke="#79e3b1" stroke-width="3"/><text x="245" y="247" text-anchor="middle" font-family="Arial" font-weight="700" font-size="13" fill="#e9f2f6">5</text><circle cx="389" cy="242" r="25" fill="#173244" stroke="#ffca79" stroke-width="3"/><text x="389" y="247" text-anchor="middle" font-family="Arial" font-weight="700" font-size="13" fill="#e9f2f6">2</text><circle cx="531" cy="242" r="25" fill="#173244" stroke="#ffca79" stroke-width="3"/><text x="531" y="247" text-anchor="middle" font-family="Arial" font-weight="700" font-size="13" fill="#e9f2f6">?</text><path d="M374 220l35 42m0-42l-35 42M515 219l35 43m0-43l-35 43" stroke="#ff8b8b" stroke-width="6" stroke-linecap="round" style="animation:pulseMark 2.5s ease-in-out infinite"/>
+<text x="317" y="314" font-family="Arial" font-weight="700" font-size="13" fill="#86deac" text-anchor="middle">SELECTED VALUE  5</text>
+</svg>

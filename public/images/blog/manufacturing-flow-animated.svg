@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-label="Animated diagram of knitwear production flow and a bottleneck">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#152735"/><stop offset="1" stop-color="#0d1824"/></linearGradient>
+    <radialGradient id="halo"><stop offset="0" stop-color="#2a97a5" stop-opacity=".19"/><stop offset="1" stop-color="#2a97a5" stop-opacity="0"/></radialGradient>
+    <pattern id="dots" width="23" height="23" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".9" fill="#52788a" opacity=".33"/></pattern>
+    <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <style>
+    .caption{font:700 13px Arial,sans-serif;letter-spacing:2px;fill:#95c9de}
+    .sub{font:500 12px Arial,sans-serif;fill:#9fb7c4}
+    .cell{fill:#182f3e;stroke:#42647a;stroke-width:1.5}
+    .cyan{stroke:#51d6f5;fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+    .mint{stroke:#79e3b1;fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+    .orange{stroke:#ffca79;fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+    .flowline{stroke-dasharray:8 12;animation:flowline 1.8s linear infinite}
+    @keyframes flowline{to{stroke-dashoffset:-40}}
+    @keyframes pulse{0%,100%{opacity:.45}50%{opacity:1}}
+    @keyframes pop{0%,12%{opacity:0;transform:scale(.7)}25%,80%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1)}}
+    @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-11px)}}
+    @keyframes rotateSymbol{to{transform:rotate(360deg)}}
+    @keyframes glowline{0%,100%{opacity:.22}50%{opacity:1}}
+    @keyframes dash{to{stroke-dashoffset:-50}}
+    @keyframes pulseMark{0%,100%{opacity:.25}50%{opacity:1}}
+    @keyframes turnCube{0%,100%{transform:translateY(3px) rotate(-2deg)}50%{transform:translateY(-10px) rotate(4deg)}}
+    
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+  </style>
+  <rect x="1" y="1" width="638" height="358" rx="16" fill="url(#bg)" stroke="#294355" stroke-width="2"/>
+  <circle cx="475" cy="150" r="225" fill="url(#halo)"/>
+  <rect x="16" y="16" width="608" height="328" rx="12" fill="url(#dots)"/>
+  <text x="30" y="40" class="caption">FACTORY  /  PRODUCTION FLOW</text><text x="30" y="65" class="sub">Linked capacities  ·  bottleneck detection</text><rect x="42" y="137" width="73" height="76" rx="9" fill="#183448" stroke="#51d6f5" stroke-width="2" stroke-opacity=".75"/><text x="78.5" y="166" font-family="Arial" font-weight="700" font-size="12" fill="#e4f3fa" text-anchor="middle">KNIT</text><rect x="57" y="181" width="43" height="6" rx="3" fill="#33596c"/><rect x="57" y="181" width="20" height="6" rx="3" fill="#51d6f5" style="animation:pulse 2.00s ease-in-out infinite"/><path d="M117 175H165" stroke="#51d6f5" stroke-width="3" stroke-dasharray="7 8" class="flowline"/><rect x="166" y="137" width="73" height="76" rx="9" fill="#183448" stroke="#ffca79" stroke-width="2" stroke-opacity=".75"/><text x="202.5" y="166" font-family="Arial" font-weight="700" font-size="12" fill="#e4f3fa" text-anchor="middle">LINK</text><rect x="181" y="181" width="43" height="6" rx="3" fill="#33596c"/><rect x="181" y="181" width="26" height="6" rx="3" fill="#ffca79" style="animation:pulse 2.27s ease-in-out infinite"/><path d="M241 175H289" stroke="#51d6f5" stroke-width="3" stroke-dasharray="7 8" class="flowline"/><rect x="290" y="137" width="73" height="76" rx="9" fill="#183448" stroke="#51d6f5" stroke-width="2" stroke-opacity=".75"/><text x="326.5" y="166" font-family="Arial" font-weight="700" font-size="12" fill="#e4f3fa" text-anchor="middle">TRIM</text><rect x="305" y="181" width="43" height="6" rx="3" fill="#33596c"/><rect x="305" y="181" width="32" height="6" rx="3" fill="#51d6f5" style="animation:pulse 2.54s ease-in-out infinite"/><path d="M365 175H413" stroke="#51d6f5" stroke-width="3" stroke-dasharray="7 8" class="flowline"/><rect x="414" y="137" width="73" height="76" rx="9" fill="#183448" stroke="#51d6f5" stroke-width="2" stroke-opacity=".75"/><text x="450.5" y="166" font-family="Arial" font-weight="700" font-size="12" fill="#e4f3fa" text-anchor="middle">IRON</text><rect x="429" y="181" width="43" height="6" rx="3" fill="#33596c"/><rect x="429" y="181" width="38" height="6" rx="3" fill="#51d6f5" style="animation:pulse 2.81s ease-in-out infinite"/><path d="M489 175H537" stroke="#51d6f5" stroke-width="3" stroke-dasharray="7 8" class="flowline"/><rect x="538" y="137" width="73" height="76" rx="9" fill="#183448" stroke="#79e3b1" stroke-width="2" stroke-opacity=".75"/><text x="574.5" y="166" font-family="Arial" font-weight="700" font-size="12" fill="#e4f3fa" text-anchor="middle">PACK</text><rect x="553" y="181" width="43" height="6" rx="3" fill="#33596c"/><rect x="553" y="181" width="44" height="6" rx="3" fill="#79e3b1" style="animation:pulse 3.08s ease-in-out infinite"/><rect x="43" y="257" width="553" height="44" rx="8" fill="#132837" stroke="#31586b"/>
+<text x="59" y="284" font-family="Arial" font-size="13" fill="#a7c4d0">THROUGHPUT</text>
+<path d="M214 281H261L290 269L337 282L380 267L420 273L462 256L512 261L570 242" stroke="#79e3b1" fill="none" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 10" class="flowline"/>
+<circle cx="570" cy="242" r="5" fill="#79e3b1" style="animation:pulse 1.6s ease-in-out infinite"/>
+<text x="198" y="112" font-size="12" font-weight="700" fill="#ffca79" font-family="Arial">CAPACITY GAP</text>
+<path d="M233 117V134" stroke="#ffca79" stroke-width="2" stroke-dasharray="4 4"/>
+</svg>
