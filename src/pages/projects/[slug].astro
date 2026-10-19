@@ -1,15 +1,80 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import {projects} from '../../data/projects';
-export function getStaticPaths(){return projects.map(project=>({params:{slug:project.slug},props:{project}}));}
-const {project}=Astro.props;
+import { projects } from '../../data/projects';
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
 ---
+
 <BaseLayout title={`${project.title} | Md Arif Hossain`} description={project.description}>
- <div class="container page-shell"><header class="page-header"><a href="/projects/" class="inline-link">← Back to projects</a><p class="eyebrow" style="margin-top:2rem">{project.number} / {project.short}</p><h1>{project.title}</h1><p class="page-lead">{project.description}</p><div class="tag-row">{project.tools.map(tool=><span class="tag-pill">{tool}</span>)}</div></header>
-  <section class="content-section two-col"><div><p class="eyebrow">CONTEXT & APPROACH</p><h2>Why this problem?</h2></div><div class="prose-block"><p>{project.detail}</p></div></section>
-  <section class="content-section two-col"><div><p class="eyebrow">METHOD</p><h2>Modeling perspective</h2></div><div class="prose-block"><div class="model-note">{project.math}</div></div></section>
-  <section class="content-section"><p class="eyebrow">WORK PERFORMED</p><h2>Selected contributions</h2><div class="contrib-grid">{project.contributions.map((item,i)=><div class="contrib"><span class="focus-number">{String(i+1).padStart(2,'0')}</span><p>{item}</p></div>)}</div></section>
-  <section class="content-section two-col"><div><p class="eyebrow">TRANSPARENCY</p><h2>Notes</h2></div><div class="prose-block"><p>{project.note}</p>{project.repo && <p><a class="btn btn-outline" href={project.repo} target="_blank" rel="noopener noreferrer">View related GitHub work ↗</a></p>}</div></section>
-  <a class="inline-link" href="/projects/">← Explore other projects</a>
- </div>
+  <div class="container page-shell">
+    <header class="page-header">
+      <a href="/projects/" class="inline-link">← Back to projects</a>
+      <p class="eyebrow" style="margin-top:2rem">{project.number} / {project.short}</p>
+      <h1>{project.title}</h1>
+      <p class="page-lead">{project.description}</p>
+      <div class="tag-row">
+        {project.tools.map((tool) => <span class="tag-pill">{tool}</span>)}
+      </div>
+      {project.image && (
+        <img
+          class="project-hero-image"
+          src={project.image}
+          alt={`Approved illustrative or anonymized screenshot of ${project.title}`}
+          loading="lazy"
+          decoding="async"
+        />
+      )}
+    </header>
+
+    <section class="content-section two-col">
+      <div><p class="eyebrow">CONTEXT & APPROACH</p><h2>Why this problem?</h2></div>
+      <div class="prose-block"><p>{project.detail}</p></div>
+    </section>
+
+    <section class="content-section two-col">
+      <div><p class="eyebrow">METHOD</p><h2>Modeling perspective</h2></div>
+      <div class="prose-block"><div class="model-note">{project.math}</div></div>
+    </section>
+
+    <section class="content-section">
+      <p class="eyebrow">WORK PERFORMED</p>
+      <h2>Selected contributions</h2>
+      <div class="contrib-grid">
+        {project.contributions.map((item, i) => (
+          <div class="contrib"><span class="focus-number">{String(i+1).padStart(2,'0')}</span><p>{item}</p></div>
+        ))}
+      </div>
+    </section>
+
+    <section class="content-section two-col">
+      <div><p class="eyebrow">TRANSPARENCY</p><h2>Notes & links</h2></div>
+      <div class="prose-block">
+        <p>{project.note}</p>
+        {project.repo && <p><a class="inline-link" href={project.repo} target="_blank" rel="noopener noreferrer">View related GitHub work ↗</a></p>}
+        {project.demo && <p><a class="inline-link" href={project.demo} target="_blank" rel="noopener noreferrer">Open approved dashboard/demo ↗</a></p>}
+      </div>
+    </section>
+
+    <a class="inline-link" href="/projects/">← Explore other projects</a>
+  </div>
 </BaseLayout>
+
+<style>
+  .project-hero-image {
+    display: block;
+    width: 100%;
+    max-height: 460px;
+    object-fit: contain;
+    margin: 2rem 0 0;
+    border: 1px solid #383838;
+    background: #242424;
+    border-radius: 5px;
+  }
+</style>
