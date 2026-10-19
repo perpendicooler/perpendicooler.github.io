@@ -33,6 +33,76 @@ const awards = [
   "Champion — Mechnovation 2019, SUST",
   "Top 20 in Bangladesh — Knights Cubing Open 2019 (WCA)",
 ];
+
+// Lightweight icon grid; no JavaScript library or other site file needed.
+// Brand icons are loaded from public SVG icon libraries.
+const devicon = (slug: string) =>
+  `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${slug}/${slug}-original.svg`;
+
+interface SkillIcon {
+  name: string;
+  src?: string;
+  symbol?: string;
+  mono?: boolean;
+}
+
+const skillGroups: { title: string; icons: SkillIcon[] }[] = [
+  {
+    title: "Optimization & Mathematical Modeling",
+    icons: [
+      {
+        name: "Gurobi",
+        src: "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/gurobi.svg",
+        mono: true,
+      },
+      { name: "PuLP", symbol: "LP" },
+      { name: "NetworkX", src: devicon("networkx") },
+      { name: "Linear & Mixed-Integer Programming", symbol: "Σ" },
+    ],
+  },
+  {
+    title: "Programming & Scientific Computing",
+    icons: [
+      { name: "Python", src: devicon("python") },
+      { name: "pandas", src: devicon("pandas") },
+      { name: "NumPy", src: devicon("numpy") },
+      { name: "SciPy", symbol: "Sci" },
+      { name: "SQL", symbol: "SQL" },
+      { name: "MATLAB", src: devicon("matlab") },
+      { name: "R (Basic)", src: devicon("r") },
+    ],
+  },
+  {
+    title: "Machine Learning & Statistical Modeling",
+    icons: [
+      { name: "scikit-learn", src: devicon("scikitlearn") },
+      { name: "XGBoost", symbol: "XGB" },
+      { name: "Matplotlib", src: devicon("matplotlib") },
+      { name: "Seaborn", symbol: "SB" },
+    ],
+  },
+  {
+    title: "Business Intelligence & Visualization",
+    icons: [
+      { name: "Tableau", symbol: "T" },
+      { name: "Power BI", symbol: "BI" },
+      { name: "Advanced Excel", symbol: "XLS" },
+      { name: "DAX", symbol: "DAX" },
+    ],
+  },
+  {
+    title: "Research & Development Tools",
+    icons: [
+      { name: "Jupyter Notebook", src: devicon("jupyter") },
+      { name: "Streamlit", src: devicon("streamlit") },
+      { name: "Git", src: devicon("git") },
+      { name: "GitHub", src: devicon("github"), mono: true },
+      { name: "LaTeX", src: devicon("latex"), mono: true },
+      { name: "HTML5", src: devicon("html5") },
+      { name: "CSS3", src: devicon("css3") },
+    ],
+  },
+];
 ---
 
 <BaseLayout
@@ -57,7 +127,6 @@ const awards = [
         and help organizations make better decisions?
       </p>
     </header>
-
 
 
     <!-- ABOUT ME -->
@@ -124,7 +193,6 @@ const awards = [
     
       </div>
     </section>
-
 
 
     <!-- EDUCATION, RESEARCH AND EXPERIENCE -->
@@ -255,7 +323,6 @@ const awards = [
     </section>
 
 
-
     <!-- TECHNICAL SKILLS -->
     <section
       id="technical-skills"
@@ -282,7 +349,6 @@ const awards = [
                     ]}
                     role="img"
                     aria-label={skill.name}
-                    title={skill.name}
                     data-name={skill.name}
                     tabindex="0"
                   >
@@ -310,8 +376,6 @@ const awards = [
         </a>
       </div>
     </section>
-
-
 
 
     <!-- ACADEMIC CV -->
@@ -361,82 +425,6 @@ const awards = [
   .organization-links a:hover {
     text-decoration: underline;
   }
-
-/* TECHNICAL SKILLS SECTION */
-
-#technical-skills {
-  scroll-margin-top: 90px;
-}
-
-.technical-content {
-  min-width: 0;
-}
-
-.technical-intro {
-  margin: 0 0 24px;
-  color: var(--color-text-muted);
-  font-size: 1rem;
-  line-height: 1.75;
-}
-
-.technical-groups {
-  display: flex;
-  flex-direction: column;
-}
-
-.technical-group {
-  padding: 17px 0;
-  border-bottom: 1px solid var(--color-border);
-}
-
-.technical-group:first-child {
-  padding-top: 0;
-}
-
-.technical-group h3,
-.technical-applications h3 {
-  margin: 0 0 7px;
-  color: var(--color-text);
-  font-size: 1.05rem;
-  font-weight: 600;
-  line-height: 1.45;
-}
-
-.technical-group p,
-.technical-applications p {
-  margin: 0;
-  color: var(--color-text-muted);
-  font-size: 0.96rem;
-  line-height: 1.72;
-}
-
-.technical-applications {
-  margin-top: 30px;
-}
-
-.technical-applications p {
-  margin-bottom: 13px;
-}
-
-.technical-applications .inline-link {
-  display: inline-block;
-  margin-top: 7px;
-}
-
-@media (max-width: 650px) {
-  .technical-intro {
-    font-size: 0.95rem;
-  }
-
-  .technical-group {
-    padding: 15px 0;
-  }
-
-  .technical-group p,
-  .technical-applications p {
-    font-size: 0.93rem;
-  }
-}
 
 /* MINIMAL TECHNICAL SKILLS ICON GRID */
 
@@ -505,7 +493,7 @@ const awards = [
 }
 
 /* Keep monochrome brand icons visible in dark mode */
-html:not([data-theme="light"]) .tech-mono img {
+:global(html:not([data-theme="light"])) .tech-mono img {
   filter: invert(1);
 }
 
