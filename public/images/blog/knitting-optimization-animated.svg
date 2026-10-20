@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Knitting style allocation optimization concept</title>
+  <desc id="desc">Illustrative capacity baskets for three machine groups, a style transfer, and checks for machine eligibility and production dates. No company data is shown.</desc>
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#161e25"/><stop offset="1" stop-color="#0f2735"/></linearGradient>
+    <linearGradient id="fill" x2="1"><stop stop-color="#217eab"/><stop offset="1" stop-color="#53c1de"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="9" stdDeviation="12" flood-opacity=".3"/></filter>
+    <style>
+      text{font-family:Arial,Helvetica,sans-serif;fill:#e8f0f4}
+      .small{font-size:18px;fill:#a9bec9}.cap{font-size:15px;fill:#84b6ce;letter-spacing:2px}
+      .heading{font-size:35px;font-weight:700}.machine{font-size:24px;font-weight:600}
+      .track{fill:#344651}.fill{fill:url(#fill)}.outline{fill:#1c303c;stroke:#446174;stroke-width:2}
+      .pulse{animation:pulse 3s ease-in-out infinite}.moving{animation:move 4.5s ease-in-out infinite}
+      .flow{stroke-dasharray:8 12;animation:dash 2s linear infinite}
+      @keyframes move{0%,12%{transform:translateX(0);opacity:1}40%,75%{transform:translateX(450px);opacity:1}95%,100%{transform:translateX(450px);opacity:0}}
+      @keyframes pulse{0%,100%{opacity:.55}50%{opacity:1}}
+      @keyframes dash{to{stroke-dashoffset:-40}}
+      @media(prefers-reduced-motion:reduce){.moving,.pulse,.flow{animation:none}}
+    </style>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <circle cx="1060" cy="80" r="270" fill="#20576b" opacity=".12"/>
+  <circle cx="200" cy="670" r="300" fill="#215170" opacity=".11"/>
+  <text x="66" y="65" class="cap">OPERATIONS RESEARCH / PRODUCTION PLANNING</text>
+  <text x="66" y="123" class="heading">What belongs on which machine?</text>
+  <text x="66" y="159" class="small">Compare SMV • protect due dates • balance capacity • explain every move</text>
+  <g transform="translate(66 222)" filter="url(#shadow)">
+    <rect width="350" height="284" rx="16" class="outline"/>
+    <text x="25" y="43" class="cap">CURRENT ALLOCATION</text>
+    <text x="25" y="86" class="machine">Machine Group A</text>
+    <text x="25" y="124" class="small">Allocated production minutes</text>
+    <rect x="25" y="149" width="300" height="18" rx="9" class="track"/>
+    <rect x="25" y="149" width="247" height="18" rx="9" class="fill"/>
+    <text x="25" y="208" class="small">Lot A · approved bulk SMV</text>
+    <text x="25" y="243" class="small">Available minutes: date-specific</text>
+  </g>
+  <g transform="translate(866 222)" filter="url(#shadow)">
+    <rect width="348" height="284" rx="16" class="outline"/>
+    <text x="25" y="43" class="cap">FEASIBLE DESTINATION</text>
+    <text x="25" y="86" class="machine">Machine Group B</text>
+    <text x="25" y="124" class="small">Recalculated production minutes</text>
+    <rect x="25" y="149" width="298" height="18" rx="9" class="track"/>
+    <rect x="25" y="149" width="190" height="18" rx="9" class="fill"/>
+    <text x="25" y="208" class="small">Lot A · destination bulk SMV</text>
+    <text x="25" y="243" class="small">Capacity and calendar validated</text>
+  </g>
+  <path class="flow" d="M440 343H843" fill="none" stroke="#52c5e4" stroke-width="4" stroke-linecap="round"/>
+  <path d="M833 330l20 13-20 13" fill="none" stroke="#52c5e4" stroke-width="4" stroke-linejoin="round"/>
+  <g class="moving">
+    <rect x="451" y="303" width="145" height="63" rx="13" fill="#194b65" stroke="#76dafa" stroke-width="2"/>
+    <text x="473" y="329" font-size="17" font-weight="bold">Style lot</text>
+    <text x="473" y="349" font-size="14" fill="#a4dff2">transfer</text>
+  </g>
+  <g transform="translate(443 398)">
+    <rect width="382" height="101" rx="12" fill="#1e3641" stroke="#3d6475"/>
+    <text x="22" y="32" font-size="19" font-weight="bold">Allocation constraints</text>
+    <text x="22" y="58" class="small">Gauge / technical eligibility</text>
+    <text x="22" y="83" class="small">Daily capacity / KSD / KED / FRI</text>
+  </g>
+  <g transform="translate(66 560)">
+    <rect width="1148" height="94" rx="14" fill="#122b37" stroke="#315363"/>
+    <text x="28" y="34" class="cap">THE PRINCIPLE</text>
+    <text x="28" y="68" font-size="23" font-weight="600">The lowest SMV is a candidate, not automatically a feasible production plan.</text>
+  </g>
+  <text x="67" y="691" font-size="14" fill="#92aab8">Concept illustration only — no identifiable production or buyer information</text>
+</svg>
