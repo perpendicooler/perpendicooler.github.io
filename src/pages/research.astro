@@ -18,14 +18,14 @@ const outputs = [
     authors: 'Md Arif Hossain; Chandrani Nag',
     venue: 'International Conference on Science, Technology, Engineering, Mathematics, and Education',
     status: 'Contributory talk · 2023',
-    url: "https://github.com/perpendicooler/Rubik-s-Cube-An-application-of-group-theory/blob/main/Rubik's%20Cube%20presentation%20certificate.pdf",
+    url: "/Rubiks_Cube_Presentation_Certificate_2023.pdf",
   },
   {
-    title: 'The Alternative Form of the Order of an Element in a Group Under Addition Modulo',
+    title: 'The Generalization form of the order of an element in a group under addition modulo',
     authors: 'Md Arif Hossain; Chandrani Nag',
     venue: 'International Conference on Science, Technology, Engineering, Mathematics, and Education',
     status: 'Contributory talk · 2023',
-    url: 'https://github.com/perpendicooler/An-different-approach-to-solve-addition-modulo-in-group-theory/blob/main/Group%20theory%20certificate%20of%20presentation.pdf',
+    url: '/Additive_Group_Order_Presentation_Certificate_2023.pdf',
   },
   {
     title: 'Fine-Grained Classification of Depression, Loneliness, and Fear in Bangla Social Media Text',
@@ -146,11 +146,50 @@ const outputs = [
               <p>{output.authors}</p>
               <p class="muted">{output.venue}</p>
               {output.url && (
-                <a class="inline-link" href={output.url} target="_blank" rel="noopener noreferrer">Presentation certificate ↗</a>
+                <a class="inline-link" href={output.url} target="_blank" rel="noopener noreferrer">View presentation certificate (PDF) ↗</a>
               )}
             </div>
           </article>
         ))}
+      </div>
+    </section>
+
+
+    <!-- Independent manuscripts, distinct from verified 2023 conference talks -->
+    <section class="content-section" aria-labelledby="independent-work-heading">
+      <p class="eyebrow">05 / INDEPENDENT MATHEMATICAL WRITING</p>
+      <h2 id="independent-work-heading">Technical manuscripts &amp; mathematical notes</h2>
+      <p class="section-note">
+        Independent technical manuscripts, available for reading. These are not
+        journal publications or peer-reviewed conference proceedings.
+      </p>
+      <div class="paper-list">
+        <article class="paper-item">
+          <span class="paper-number">01</span>
+          <div>
+            <p class="mini-label">Independent manuscript · 2026</p>
+            <h3>Orders of Elements in Additive Cyclic Groups: A Least-Common-Multiple Derivation and Residue-Wheel Interpretation</h3>
+            <p>Md Arif Hossain</p>
+            <p class="muted">An LCM-first derivation of element order, visualized using residue wheels, cycle decompositions, and finite verification.</p>
+            <div class="research-links">
+              <a class="inline-link" href="/Orders_of_Elements_Additive_Cyclic_Groups_Manuscript.pdf" target="_blank" rel="noopener noreferrer">Read mathematical manuscript (PDF) ↗</a>
+              <a class="inline-link" href="/blog/orders-of-elements-in-additive-cyclic-groups/">Explore wheel-based mathematical writing ↗</a>
+            </div>
+          </div>
+        </article>
+        <article class="paper-item">
+          <span class="paper-number">02</span>
+          <div>
+            <p class="mini-label">Independent technical exposition · 2026</p>
+            <h3>The Rubik’s Cube as a Finite Group: Permutations, Invariants, and Shortest-Path Search</h3>
+            <p>Md Arif Hossain</p>
+            <p class="muted">An exposition of cube-group invariants, reachable configurations, Cayley-graph shortest paths, and a bounded computational search.</p>
+            <div class="research-links">
+              <a class="inline-link" href="/Rubiks_Cube_Finite_Group_Manuscript.pdf" target="_blank" rel="noopener noreferrer">Read technical manuscript (PDF) ↗</a>
+              <a class="inline-link" href="/blog/rubiks-cube-group-theory-combinatorics/">Read the Rubik’s Cube article ↗</a>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
