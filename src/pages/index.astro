@@ -16,6 +16,7 @@ const presentations = [
     authors: "Md Arif Hossain and Chandrani Nag",
     venue: "International Conference on Science, Technology, Engineering, Mathematics, and Education",
     note: "Contributory talk · 2023",
+    certificate: "/Rubiks_Cube_Presentation_Certificate_2023.pdf",
   },
   {
     label: "ICSTEME 2023",
@@ -23,6 +24,7 @@ const presentations = [
     authors: "Md Arif Hossain and Chandrani Nag",
     venue: "International Conference on Science, Technology, Engineering, Mathematics, and Education",
     note: "Contributory talk · 2023",
+    certificate: "/Additive_Group_Order_Presentation_Certificate_2023.pdf",
   },
 ];
 
@@ -88,6 +90,13 @@ const presentations = [
               <p>{item.authors}</p>
               <p class="publication-venue"><em>{item.venue}</em></p>
               <p class="publication-note">{item.note}</p>
+
+              {item.certificate && (
+                <p class="publication-note">
+                  <a href={item.certificate} target="_blank" rel="noopener noreferrer">Presentation certificate ↗</a>
+                </p>
+              )}
+
             </div>
           </article>
         ))}
