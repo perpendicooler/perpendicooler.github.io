@@ -4,6 +4,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 const indesoreWebsite = "https://www.indesore.com/";
 const indesoreLinkedIn = "https://www.linkedin.com/company/indesoregroup/";
 
+// Public, privacy-reviewed PDFs uploaded to the root of public/.
+const researchCertificate = "/Arif_SUST_Research_Experience_Certificate.pdf";
+const undergraduateProject = "/Arif_Infinite_Matrices_Undergraduate_Thesis.pdf";
+
 const timeline = [
   {
     period: "2019–2024",
@@ -169,8 +173,8 @@ const skillGroups: { title: string; icons: SkillIcon[] }[] = [
             target="_blank"
             rel="noopener noreferrer"
           ><strong>Dr. Mohammad Salah Uddin</strong></a>.
-          I also completed an undergraduate thesis on determinants,
-          inverses, and eigenvalues of infinite matrices.
+          I also co-authored an undergraduate mathematics project on
+          determinants, inverses, and eigenvalues of infinite matrices.
           Those experiences helped shape my interest in rigorous
           mathematical analysis and computation.
         </p>
@@ -228,6 +232,17 @@ const skillGroups: { title: string; icons: SkillIcon[] }[] = [
                 </p>
               )}
 
+              {t.label === "Research" && (
+                <p>
+                  <a
+                    class="inline-link"
+                    href={researchCertificate}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >View research experience certificate (PDF) ↗</a>
+                </p>
+              )}
+
               {t.label === "Industry" && (
                 <p class="organization-links">
                   <a
@@ -260,7 +275,7 @@ const skillGroups: { title: string; icons: SkillIcon[] }[] = [
     <!-- UNDERGRADUATE THESIS -->
     <section class="content-section two-col">
       <div>
-        <p class="eyebrow">UNDERGRADUATE THESIS</p>
+        <p class="eyebrow">UNDERGRADUATE PROJECT · MAT 433</p>
 
         <h2>Numerical &amp; computational mathematics</h2>
       </div>
@@ -272,17 +287,32 @@ const skillGroups: { title: string; icons: SkillIcon[] }[] = [
         </h3>
 
         <p>
-          My undergraduate thesis studied matrix determinants,
-          inverse constructions, eigenvalues, matrix logarithms,
-          convergence, and series-expansion methods in the
-          setting of infinite matrices.
-          The work included numerical approaches to
-          approximating matrix-related quantities.
+          Our undergraduate mathematics project explored matrix determinants,
+          inverse constructions, eigenvalues, matrix logarithms, convergence,
+          and series-expansion methods in the context of infinite matrices.
+          It also included numerical approaches for approximating
+          matrix-related quantities.
         </p>
 
-        <a class="inline-link" href="/research/">
-          See research experience ↗
-        </a>
+        <p>
+          <strong>Authors:</strong>{" "}Md Arif Hossain,
+          Iftekhar Al Mahmud, Rafiur Rahman, and Durjoy Das.
+        </p>
+        <p>
+          <strong>Supervisor:</strong>{" "}Dr. Mohammad Salah Uddin.
+        </p>
+
+        <p>
+          <a
+            class="inline-link"
+            href={undergraduateProject}
+            target="_blank"
+            rel="noopener noreferrer"
+          >Read full undergraduate project (PDF) ↗</a>
+        </p>
+        <p>
+          <a class="inline-link" href="/research/">See research experience ↗</a>
+        </p>
       </div>
     </section>
 
