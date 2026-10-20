@@ -3,19 +3,24 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { slugifyTag } from '../../utils/tags';
 
+// Newest articles appear first.
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-// Use the SAME existing animated SVG as the lead image in each article.
-// Keep the thumbnail and the article lead image in sync.
+// Match each listing thumbnail to the lead illustration inside its article.
+// Image files are already located in public/images/blog/.
 const visuals: Record<string, { src: string; alt: string }> = {
+  'knitting-capacity-optimization-from-baskets-to-milp': {
+    src: '/images/blog/knitting-optimization-animated.svg',
+    alt: 'Knitting allocation diagram showing machine-capacity baskets, style transfers and scheduling constraints',
+  },
   'operations-research-bangladesh-manufacturing': {
     src: '/images/blog/manufacturing-flow-animated.svg',
-    alt: 'From manufacturing data to decisions: observe, predict, optimize, validate',
+    alt: 'Manufacturing decision-support workflow: observe, predict, optimize and validate',
   },
   'tic-tac-toe-extensive-form-game-theory': {
     src: '/images/blog/tic-tac-toe-game-animated.svg',
-    alt: 'Tic-Tac-Toe as an extensive-form game tree',
+    alt: 'Tic-Tac-Toe extensive-form game tree',
   },
   'minimax-alpha-beta-pruning-python': {
     src: '/images/blog/minimax-pruning-animated.svg',
@@ -23,15 +28,15 @@ const visuals: Record<string, { src: string; alt: string }> = {
   },
   'tictactoe-symmetry-burnsides-lemma': {
     src: '/images/blog/symmetry-burnside-animated.svg',
-    alt: 'A Tic-Tac-Toe board under rotations and reflections',
+    alt: 'Tic-Tac-Toe board under rotations and reflections',
   },
   'orders-of-elements-in-additive-cyclic-groups': {
     src: '/images/blog/modular-wheels-z10-steps.svg',
-    alt: 'Residue-wheel diagrams of modular addition and cyclic group element orders',
+    alt: 'Residue-wheel diagrams illustrating modular addition and the orders of cyclic-group elements',
   },
   'rubiks-cube-group-theory-combinatorics': {
     src: '/images/blog/rubiks-group-animated.svg',
-    alt: 'Rubik’s Cube illustration demonstrating a permutation puzzle',
+    alt: 'Rubik’s Cube visualization of permutations and finite group theory',
   },
 };
 ---
@@ -54,6 +59,7 @@ const visuals: Record<string, { src: string; alt: string }> = {
         {posts.map((post) => {
           const href = `/blog/${post.id}/`;
           const visual = visuals[post.id];
+
           return (
             <article class="writing-entry writing-entry-visual">
               <div class="writing-copy">
@@ -101,6 +107,7 @@ const visuals: Record<string, { src: string; alt: string }> = {
 </BaseLayout>
 
 <style>
+  /* Keep the existing clean Writing layout: text left, illustration right. */
   .writing-entry-visual {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 242px;
@@ -129,7 +136,7 @@ const visuals: Record<string, { src: string; alt: string }> = {
     max-width: 650px;
     margin: 0;
     color: var(--color-text-muted);
-    font-size: .93rem;
+    font-size: 0.93rem;
     line-height: 1.65;
   }
 
