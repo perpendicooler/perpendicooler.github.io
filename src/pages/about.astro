@@ -287,38 +287,48 @@ const skillGroups: { title: string; icons: SkillIcon[] }[] = [
     </section>
 
     <!-- BEYOND RESEARCH -->
-    <section class="content-section two-col">
-      <div>
+    <section class="content-section beyond-research" aria-labelledby="beyond-research-heading">
+      <div class="beyond-heading">
         <p class="eyebrow">BEYOND RESEARCH</p>
-
-        <h2>Speedcubing &amp; mathematical puzzles</h2>
+        <h2 id="beyond-research-heading">Speedcubing &amp; mathematical puzzles</h2>
+        <p class="beyond-side-note">A personal interest in patterns, problem-solving, and the mathematics behind puzzles.</p>
       </div>
 
-      <div class="prose-block">
-        <p>
-          Speedcubing sparked my interest in the relationship
-          between mathematical structure and computational
-          problem-solving.
-          I served as Instructor &amp; Head of the Cubing
-          and Puzzle Wing at SUST Science Arena
-          (February 2023–March 2024), organizing workshops
-          and mentoring students.
-        </p>
+      <div class="beyond-body">
+        <div class="beyond-story">
+          <p class="beyond-lead">
+            Speedcubing sparked my interest in the relationship between
+            mathematical structure and computational problem-solving.
+          </p>
+          <p>
+            I served as Instructor &amp; Head of the Cubing and Puzzle Wing
+            at SUST Science Arena (February 2023–March 2024), organizing
+            workshops and mentoring students.
+          </p>
+        </div>
 
-        <ul>
-          {awards.map((award) => (
-            <li>{award}</li>
-          ))}
-        </ul>
+        <div class="beyond-highlights">
+          <h3>Competition highlights</h3>
+          <ul class="beyond-award-list">
+            {awards.map((award, index) => (
+              <li>
+                <span class="beyond-award-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                <span class="beyond-award-title">{award}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-        <p>
-          In 2023, I co-presented a contributory talk on
-          the Rubik's Cube as an application of group theory.
-        </p>
-
-        <a class="inline-link" href="/blog/">
-          Explore mathematical writing ↗
-        </a>
+        <div class="beyond-talk">
+          <p class="beyond-talk-label">FROM PUZZLES TO MATHEMATICS</p>
+          <p>
+            In 2023, I co-presented a contributory talk on the Rubik's Cube
+            as an application of group theory.
+          </p>
+          <a class="inline-link" href="/blog/rubiks-cube-group-theory-combinatorics/">
+            Explore the mathematical writing ↗
+          </a>
+        </div>
       </div>
     </section>
 
@@ -569,5 +579,122 @@ const skillGroups: { title: string; icons: SkillIcon[] }[] = [
   }
 }
 
+
+
+  /* BEYOND RESEARCH — uncluttered, editorial two-column layout */
+  .beyond-research {
+    display: grid;
+    grid-template-columns: minmax(0, 0.37fr) minmax(0, 0.63fr);
+    align-items: start;
+    column-gap: clamp(42px, 7vw, 92px);
+    padding-block: clamp(4rem, 7vw, 6rem);
+  }
+
+  .beyond-heading { min-width: 0; }
+  .beyond-heading .eyebrow { margin: 0 0 19px; }
+  .beyond-heading h2 {
+    margin: 0;
+    max-width: 330px;
+    font-size: clamp(1.65rem, 3vw, 2.1rem);
+    font-weight: 400;
+    line-height: 1.28;
+    letter-spacing: -0.035em;
+  }
+  .beyond-side-note {
+    max-width: 310px;
+    margin: 22px 0 0;
+    color: var(--color-text-subtle);
+    font-size: 0.9rem;
+    line-height: 1.75;
+  }
+
+  .beyond-body { min-width: 0; max-width: 680px; }
+  .beyond-story {
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .beyond-story p {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    line-height: 1.85;
+  }
+  .beyond-story p + p { margin-top: 18px; }
+  .beyond-story .beyond-lead { color: var(--color-text); }
+
+  .beyond-highlights { padding-top: 32px; }
+  .beyond-highlights h3 {
+    margin: 0 0 13px;
+    font-size: 0.83rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-subtle);
+  }
+  .beyond-award-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--color-border);
+  }
+  .beyond-award-list li {
+    display: grid;
+    grid-template-columns: 36px minmax(0, 1fr);
+    gap: 16px;
+    align-items: baseline;
+    padding: 16px 2px;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .beyond-award-number {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: var(--color-accent);
+  }
+  .beyond-award-title {
+    font-size: 0.97rem;
+    line-height: 1.65;
+    color: var(--color-text);
+  }
+
+  .beyond-talk {
+    margin-top: 36px;
+    padding: 2px 0 3px 20px;
+    border-left: 2px solid var(--color-accent);
+  }
+  .beyond-talk-label {
+    margin: 0 0 12px;
+    color: var(--color-accent);
+    font-family: var(--font-mono, monospace);
+    font-size: 0.71rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+  }
+  .beyond-talk > p:not(.beyond-talk-label) {
+    margin: 0 0 15px;
+    font-size: 0.96rem;
+    line-height: 1.8;
+    color: var(--color-text-muted);
+  }
+  .beyond-talk .inline-link { font-size: 0.9rem; }
+
+  @media (max-width: 780px) {
+    .beyond-research {
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 30px;
+      padding-block: 4rem;
+    }
+    .beyond-heading h2 { max-width: 590px; }
+    .beyond-side-note { margin-top: 14px; max-width: 590px; }
+    .beyond-body { max-width: none; }
+  }
+  @media (max-width: 480px) {
+    .beyond-research { row-gap: 26px; padding-block: 3.2rem; }
+    .beyond-heading h2 { font-size: 1.65rem; }
+    .beyond-story p { font-size: 0.96rem; line-height: 1.8; }
+    .beyond-award-list li { gap: 10px; padding-block: 15px; }
+    .beyond-award-title { font-size: 0.94rem; }
+    .beyond-talk { margin-top: 30px; padding-left: 16px; }
+  }
 
 </style>
