@@ -1,5 +1,5 @@
 ---
-title: 'When Modular Arithmetic Became a Wheel: My First Journey from Group Theory to the LCM'
+title: 'WMy First Steps into Research: From Group Theory Questions to Mathematical Thinking'
 description: 'A personal mathematical journey from noticing patterns in additive cyclic groups to drawing residue wheels, discovering an LCM-based formula for element order, and writing my first academic manuscript.'
 pubDate: '2022-10-21'
 tags:
