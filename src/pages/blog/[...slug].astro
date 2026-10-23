@@ -1,4 +1,3 @@
-
 ---
 import { getCollection, render } from 'astro:content';
 import { getReadingTime } from '../../utils/readingTime';
@@ -16,7 +15,13 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const readingTime = getReadingTime(post.body);
-const { Content } = await render(post);
+
+// Astro generates these from the actual Markdown headings and gives us the
+// exact IDs used in the article. No manual contents list is required.
+const { Content, headings } = await render(post);
+const toc = headings.filter((heading) =>
+  heading.depth >= 2 && heading.depth <= 3 && heading.slug
+);
 
 const formattedDate = post.data.pubDate.toLocaleDateString('en-GB', {
   day: 'numeric',
@@ -25,65 +30,276 @@ const formattedDate = post.data.pubDate.toLocaleDateString('en-GB', {
 });
 ---
 
-<BaseLayout
-  title={post.data.title}
-  description={post.data.description}
->
-  <main class="mx-auto max-w-3xl px-6 py-16 sm:py-24">
-    <article>
-      <header class="mb-12">
-        <a
-          href="/blog/"
-          class="mb-8 inline-block text-sm text-[var(--accent)] hover:underline"
-        >
-          ← Back to blog
-        </a>
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <!-- BaseLayout already supplies the main element; avoid nesting a second main. -->
+  <div class="article-page">
+    <div class="article-grid">
+      <article class="article-column">
+        <header class="article-header">
+          <a class="back-link" href="/blog/">← Back to writing</a>
 
-        <p class="mb-4 text-sm text-[var(--text-muted)]">
-          <time datetime={post.data.pubDate.toISOString()}>
-            {formattedDate}
-          </time>
-          <span aria-hidden="true"> · </span>
-          <span>{readingTime} min read</span>
-          {post.data.updatedDate && (
-            <span>
-              {' '}· Updated{' '}
-              {post.data.updatedDate.toLocaleDateString('en-GB', {
-                day: 'numeric',
-                month: 'long',
-                year: 'numeric',
-              })}
-            </span>
+          <p class="post-meta">
+            <time datetime={post.data.pubDate.toISOString()}>{formattedDate}</time>
+            <span aria-hidden="true">·</span>
+            <span>{readingTime} min read</span>
+            {post.data.updatedDate && (
+              <>
+                <span aria-hidden="true">·</span>
+                <span>Updated {post.data.updatedDate.toLocaleDateString('en-GB', {
+                  day: 'numeric', month: 'long', year: 'numeric',
+                })}</span>
+              </>
+            )}
+          </p>
+
+          <h1 class="article-title">{post.data.title}</h1>
+          <p class="article-description">{post.data.description}</p>
+
+          {post.data.tags.length > 0 && (
+            <ul class="post-tags" aria-label="Article topics">
+              {post.data.tags.map((tag) => (
+                <li><a href={`/blog/tags/${slugifyTag(tag)}/`}>{tag}</a></li>
+              ))}
+            </ul>
           )}
-        </p>
+        </header>
 
-        <h1 class="mb-5 text-4xl font-bold tracking-tight sm:text-5xl">
-          {post.data.title}
-        </h1>
-
-        <p class="text-lg leading-8 text-[var(--text-muted)]">
-          {post.data.description}
-        </p>
-
-        {post.data.tags.length > 0 && (
-          <ul class="mt-6 flex flex-wrap gap-2">
-            {post.data.tags.map((tag) => (
-              <li class="rounded border border-[var(--border)] px-2 py-1 text-xs text-[var(--text-muted)]">
-                <a
-                    href={`/blog/tags/${slugifyTag(tag)}/`}
-                    class="hover:text-[var(--accent)]"
-                >
-                    {tag}
-                </a>
-            </li>
-            ))}
-          </ul>
+        <!-- On small screens the same TOC appears here as a compact disclosure. -->
+        {toc.length > 0 && (
+          <details class="mobile-toc">
+            <summary>On this page <span aria-hidden="true">⌄</span></summary>
+            <nav aria-label="Article contents (mobile)">
+              <ol class="toc-list">
+                {toc.map((heading) => (
+                  <li class:list={['toc-item', `toc-depth-${heading.depth}`]}>
+                    <a class="toc-link" href={`#${heading.slug}`}>{heading.text}</a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          </details>
         )}
-      </header>
 
-      <div class="blog-content">
-        <Content />
-      </div>
-    </article>
-  </main>
+        <div class="blog-content">
+          <Content />
+        </div>
+      </article>
+
+      {toc.length > 0 && (
+        <aside class="article-toc" aria-label="On this page">
+          <div class="toc-sticky">
+            <p class="toc-heading"><span class="toc-marker" aria-hidden="true">⌄</span> On this page</p>
+            <nav aria-label="Article table of contents">
+              <ol class="toc-list">
+                {toc.map((heading) => (
+                  <li class:list={['toc-item', `toc-depth-${heading.depth}`]}>
+                    <a class="toc-link" href={`#${heading.slug}`}>{heading.text}</a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          </div>
+        </aside>
+      )}
+    </div>
+  </div>
 </BaseLayout>
+
+<style>
+  /* Match the portfolio: open layout, restrained accent, no independent card. */
+  .article-page {
+    width: min(calc(100% - 3rem), 1140px);
+    margin-inline: auto;
+    padding: clamp(3.2rem, 6vw, 5.5rem) 0 6rem;
+  }
+
+  .article-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 244px;
+    gap: clamp(2.25rem, 5vw, 4rem);
+    align-items: start;
+  }
+
+  .article-column { min-width: 0; }
+  .article-header { margin-bottom: 2.9rem; }
+  .back-link {
+    display: inline-flex;
+    margin-bottom: 1.55rem;
+    color: var(--color-accent);
+    font-size: .89rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .back-link:hover { color: var(--color-accent-hover); text-decoration: underline; }
+  .post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .45rem;
+    align-items: center;
+    margin: 0 0 .95rem;
+    color: var(--color-text-subtle);
+    font-size: .78rem;
+    line-height: 1.65;
+  }
+  .article-title {
+    max-width: 800px;
+    margin: 0 0 1rem;
+    color: var(--color-text);
+    font-size: clamp(2.05rem, 3.6vw, 3rem);
+    font-weight: 680;
+    line-height: 1.17;
+    letter-spacing: -.041em;
+    text-wrap: balance;
+    overflow-wrap: anywhere;
+  }
+  .article-description {
+    max-width: 760px;
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 1.04rem;
+    line-height: 1.73;
+  }
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .45rem;
+    padding: 0;
+    margin: 1.35rem 0 0;
+    list-style: none;
+  }
+  .post-tags a {
+    display: inline-block;
+    padding: .23rem .56rem;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    color: var(--color-text-muted);
+    font-size: .77rem;
+    line-height: 1.55;
+    text-decoration: none;
+  }
+  .post-tags a:hover { color: var(--color-accent); border-color: var(--color-accent); }
+
+  /* Sidebar starts level with the article header and stays in view on scroll. */
+  .article-toc { min-width: 0; align-self: stretch; }
+  .toc-sticky {
+    position: sticky;
+    top: 96px;
+    max-height: calc(100vh - 122px);
+    max-height: calc(100dvh - 122px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) transparent;
+    padding: .05rem .4rem .5rem 1.15rem;
+    border-left: 1px solid var(--color-border);
+  }
+  .toc-heading {
+    display: flex;
+    align-items: center;
+    gap: .45rem;
+    margin: 0 0 .75rem;
+    color: var(--color-text);
+    font-size: .82rem;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+  .toc-marker { color: var(--color-accent); font-size: 1.05rem; }
+  .toc-list { list-style: none; padding: 0; margin: 0; }
+  .toc-item { margin: 0; }
+  .toc-link {
+    display: block;
+    border-left: 2px solid transparent;
+    margin-left: -1.25rem;
+    padding: .43rem .35rem .43rem 1.12rem;
+    color: var(--color-text-subtle);
+    font-size: .79rem;
+    line-height: 1.55;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+    transition: color .18s ease, border-color .18s ease;
+  }
+  .toc-depth-3 .toc-link { padding-left: 1.85rem; font-size: .76rem; }
+  .toc-link:hover, .toc-link.is-active {
+    color: var(--color-accent);
+    border-left-color: var(--color-accent);
+  }
+  .toc-link:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 1px; }
+  .mobile-toc { display: none; }
+
+  /* Anchor targets remain visible below the fixed/sticky site navigation. */
+  .article-column :global(.blog-content h2[id]),
+  .article-column :global(.blog-content h3[id]) { scroll-margin-top: 105px; }
+
+  @media (max-width: 950px) {
+    .article-page { width: min(calc(100% - 2.5rem), 760px); padding-top: 3rem; }
+    .article-grid { display: block; }
+    .article-toc { display: none; }
+    .mobile-toc {
+      display: block;
+      margin: 0 0 2.35rem;
+      padding: .75rem 1rem;
+      border-block: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+    }
+    .mobile-toc summary {
+      cursor: pointer;
+      color: var(--color-text);
+      font-size: .89rem;
+      font-weight: 650;
+      list-style: none;
+    }
+    .mobile-toc summary::-webkit-details-marker { display: none; }
+    .mobile-toc summary span { float: right; color: var(--color-accent); }
+    .mobile-toc[open] summary span { transform: rotate(180deg); }
+    .mobile-toc nav { margin-top: .65rem; max-height: 310px; overflow-y: auto; }
+    .mobile-toc .toc-link { margin-left: 0; padding: .38rem .6rem; }
+    .mobile-toc .toc-depth-3 .toc-link { padding-left: 1.2rem; }
+  }
+  @media (max-width: 600px) {
+    .article-page { width: calc(100% - 2rem); padding-top: 2rem; padding-bottom: 4rem; }
+    .article-header { margin-bottom: 1.8rem; }
+    .article-title { font-size: clamp(1.85rem, 7vw, 2.45rem); line-height: 1.22; }
+    .article-description { font-size: .97rem; }
+    .post-tags { margin-top: 1.05rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .toc-link { transition: none; }
+  }
+</style>
+
+<script>
+  // Track the section currently being read. Both desktop and mobile links
+  // use the same pre-generated heading IDs, so no article-specific setup.
+  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('.toc-link'));
+  const articleHeadings = Array.from(
+    document.querySelectorAll<HTMLElement>('.blog-content h2[id], .blog-content h3[id]')
+  );
+
+  if (links.length && articleHeadings.length) {
+    const updateActive = () => {
+      let activeId = articleHeadings[0].id;
+      for (const heading of articleHeadings) {
+        if (heading.getBoundingClientRect().top <= 160) activeId = heading.id;
+        else break;
+      }
+      links.forEach((link) => {
+        const selected = link.getAttribute('href') === `#${activeId}`;
+        link.classList.toggle('is-active', selected);
+        if (selected) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    };
+
+    let scheduled = false;
+    const handleScroll = () => {
+      if (scheduled) return;
+      scheduled = true;
+      window.requestAnimationFrame(() => {
+        updateActive();
+        scheduled = false;
+      });
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll);
+    updateActive();
+  }
+</script>
