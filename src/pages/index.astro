@@ -45,20 +45,21 @@ const presentations = [
       <div class="intro-layout">
         <div class="intro-copy">
           <p class="hero-lead">
-            My curiosity began with mathematics at
-            <a href="https://www.sust.edu/" target="_blank" rel="noopener noreferrer">Shahjalal University of Science and Technology (SUST)</a>—
-            with questions about patterns, structures, and how mathematical ideas fit together.
+            My curiosity grew while studying mathematics at{' '}
+            <a href="https://www.sust.edu/" target="_blank" rel="noopener noreferrer">Shahjalal University of Science and Technology (SUST)</a>,
+            where questions about patterns and mathematical structures drew me toward research.
           </p>
           <p>
-            Today, as a <strong>Business Intelligence Analyst at INDESORE Group</strong>,
-            I explore how operations research, mathematical optimization, and data-driven
-            models can make complex manufacturing decisions more transparent and effective.
+            Today, as a{' '}
+            <strong>Business Intelligence Analyst at INDESORE Group</strong>,
+            I explore how operations research, mathematical optimization, and data-driven models
+            can improve decisions in complex manufacturing systems.
           </p>
           <p>
-            My academic research at the SUST Research Center focused on matrix methods for
-            <strong>partially ordered sets and lattices</strong>, under the supervision of
+            My academic research at the SUST Research Center focused on matrix methods for{' '}
+            <strong>partially ordered sets and lattices</strong>, under the supervision of{' '}
             <a href="https://www.sust.edu/departments/mat/faculty/salahuddin-mat%40sust.edu" target="_blank" rel="noopener noreferrer">Dr. Mohammad Salah Uddin</a>.
-            I remain interested in the space where mathematical reasoning meets practical constraints.
+            {' '}I remain interested in where mathematical reasoning meets practical constraints.
           </p>
           <div class="hero-links" aria-label="Explore my work">
             <a href="/research/">Explore research <span aria-hidden="true">↗</span></a>
@@ -158,9 +159,9 @@ const presentations = [
     text-decoration: underline;
   }
 
-  .hero-area { padding-top: clamp(62px, 9vw, 100px); }
+  .hero-area { padding-top: clamp(48px, 6vw, 76px); }
   .hero-eyebrow {
-    margin: 0 0 23px;
+    margin: 0 0 20px;
     color: var(--color-accent);
     font-family: var(--font-mono, monospace);
     font-size: .73rem;
@@ -171,12 +172,12 @@ const presentations = [
   .hero-eyebrow span { margin: 0 .28em; }
   .hero-title {
     max-width: 970px;
-    margin: 0 0 clamp(35px, 5vw, 58px) !important;
+    margin: 0 0 clamp(30px, 4.2vw, 44px) !important;
     color: var(--color-text);
-    font-size: clamp(3rem, 6.5vw, 5.15rem);
-    font-weight: 750;
-    line-height: 1.07;
-    letter-spacing: -.058em;
+    font-size: clamp(2.65rem, 4.45vw, 3.55rem);
+    font-weight: 730;
+    line-height: 1.135;
+    letter-spacing: -.048em;
     text-wrap: balance;
   }
   .hero-title span {
@@ -187,20 +188,20 @@ const presentations = [
   .intro-layout {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 214px;
-    gap: clamp(28px, 5vw, 65px);
+    gap: clamp(30px, 4vw, 50px);
     align-items: start;
   }
   .intro-copy { min-width: 0; max-width: 705px; }
   .intro-copy p {
-    margin: 0 0 17px;
+    margin: 0 0 18px;
     color: var(--color-text-muted);
     font-size: 1rem;
-    line-height: 1.77;
+    line-height: 1.73;
   }
   .intro-copy .hero-lead {
     color: var(--color-text);
-    font-size: clamp(1.04rem, 1.55vw, 1.15rem);
-    line-height: 1.76;
+    font-size: clamp(1rem, 1.3vw, 1.08rem);
+    line-height: 1.73;
   }
   .intro-copy strong {
     color: var(--color-text);
@@ -210,8 +211,8 @@ const presentations = [
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 12px 30px;
-    padding-top: 10px;
+    gap: 12px 28px;
+    padding-top: 9px;
   }
   .hero-links a {
     display: inline-flex;
@@ -254,8 +255,8 @@ const presentations = [
   }
 
   .contributions {
-    margin-top: clamp(67px, 9vw, 105px);
-    padding-top: 29px;
+    margin-top: clamp(52px, 7vw, 82px);
+    padding-top: 26px;
     border-top: 1px solid var(--color-border);
   }
   .contribution-heading {
@@ -343,19 +344,19 @@ const presentations = [
 
   @media (max-width: 800px) {
     .intro-layout { grid-template-columns: minmax(0, 1fr) 185px; gap: 26px; }
-    .hero-title { font-size: clamp(2.95rem, 6.2vw, 4.8rem); }
+    .hero-title { font-size: clamp(2.45rem, 5vw, 3.55rem); }
     .intro-copy p { font-size: .97rem; }
   }
   @media (max-width: 650px) {
     .minimal-home { width: calc(100% - 2rem); padding-bottom: 55px; }
-    .hero-area { padding-top: 48px; }
+    .hero-area { padding-top: 42px; }
     .hero-eyebrow { font-size: .63rem; letter-spacing: .085em; }
     .hero-title {
-      margin-bottom: 30px !important;
-      font-size: clamp(2.35rem, 9vw, 3.3rem);
-      line-height: 1.12;
+      margin-bottom: 28px !important;
+      font-size: clamp(2.1rem, 8vw, 3rem);
+      line-height: 1.16;
     }
-    .intro-layout { grid-template-columns: 1fr; gap: 25px; }
+    .intro-layout { grid-template-columns: 1fr; gap: 29px; }
     .profile-aside {
       width: 100%;
       flex-direction: row;
