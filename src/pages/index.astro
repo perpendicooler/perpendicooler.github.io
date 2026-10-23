@@ -35,44 +35,54 @@ const presentations = [
   description="Md Arif Hossain is a Mathematics graduate of SUST and a Business Intelligence Analyst at INDESORE Group. His interests include operations research, mathematical optimization, combinatorics, and manufacturing systems."
 >
   <div class="minimal-home">
-    <section class="intro-layout" aria-labelledby="home-title">
-      <div class="intro-copy">
-        <h1 id="home-title">Md Arif Hossain</h1>
-        <p>
-          Hi! I'm <strong>Arif</strong>, a Mathematics graduate from 
-           <a href="https://www.sust.edu/" target="_blank" rel="noopener noreferrer"> Shahjalal University of Science and Technology (SUST) </a>
-           and currently a <strong> Business Intelligence Analyst</strong> at
-          INDESORE Group in Bangladesh.
-        </p>
-        <p>
-          I previously worked as a research student at the SUST Research Center,
-          investigating matrix methods for <strong>partially ordered sets and lattices </strong>
-          under the guidance of <strong> <a href="https://www.sust.edu/departments/mat/faculty/salahuddin-mat%40sust.edu" target="_blank" rel="noopener noreferrer" > Dr. Mohammad Salah Uddin </a> </strong>.
-        </p>
-        <p>
-          My interests lie in <strong>Operations Research, Mathematical Optimization,
-          Combinatorial Optimization, and Machine Learning</strong>, particularly
-          their applications to real-world decision-making and manufacturing systems.
-          I'm always open to academic discussions and collaboration.
-        </p>
-      </div>
+    <section class="hero-area" aria-labelledby="home-title">
+      <p class="hero-eyebrow">MATHEMATICS <span aria-hidden="true">·</span> OPERATIONS RESEARCH <span aria-hidden="true">·</span> OPTIMIZATION</p>
+      <h1 id="home-title" class="hero-title">
+        Just because a system works
+        <span>doesn't mean it works best.</span>
+      </h1>
 
-      <aside class="profile-aside" aria-label="Portrait and contact information">
-        <img
-          class="profile-portrait"
-          src="/images/Arif_Profile.jpg"
-          alt="Portrait of Md Arif Hossain"
-          width="640"
-          height="640"
-          loading="eager"
-          fetchpriority="high"
-          decoding="async"
-        />
-        <div class="profile-details">
-          <a href="mailto:arif39@student.sust.edu">arif39@student.sust.edu</a>
-          <span>Dhaka, Bangladesh</span>
+      <div class="intro-layout">
+        <div class="intro-copy">
+          <p class="hero-lead">
+            My curiosity began with mathematics at
+            <a href="https://www.sust.edu/" target="_blank" rel="noopener noreferrer">Shahjalal University of Science and Technology (SUST)</a>—
+            with questions about patterns, structures, and how mathematical ideas fit together.
+          </p>
+          <p>
+            Today, as a <strong>Business Intelligence Analyst at INDESORE Group</strong>,
+            I explore how operations research, mathematical optimization, and data-driven
+            models can make complex manufacturing decisions more transparent and effective.
+          </p>
+          <p>
+            My academic research at the SUST Research Center focused on matrix methods for
+            <strong>partially ordered sets and lattices</strong>, under the supervision of
+            <a href="https://www.sust.edu/departments/mat/faculty/salahuddin-mat%40sust.edu" target="_blank" rel="noopener noreferrer">Dr. Mohammad Salah Uddin</a>.
+            I remain interested in the space where mathematical reasoning meets practical constraints.
+          </p>
+          <div class="hero-links" aria-label="Explore my work">
+            <a href="/research/">Explore research <span aria-hidden="true">↗</span></a>
+            <a href="/projects/">Selected projects <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
-      </aside>
+
+        <aside class="profile-aside" aria-label="Portrait and contact information">
+          <img
+            class="profile-portrait"
+            src="/images/Arif_Profile.jpg"
+            alt="Portrait of Md Arif Hossain"
+            width="640"
+            height="640"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
+          <div class="profile-details">
+            <a href="mailto:arif39@student.sust.edu">arif39@student.sust.edu</a>
+            <span>Dhaka, Bangladesh</span>
+          </div>
+        </aside>
+      </div>
     </section>
 
     <section class="contributions" aria-labelledby="contributions-heading">
@@ -119,68 +129,251 @@ const presentations = [
 </BaseLayout>
 
 <style>
-  /* Homepage-only reset: neutral charcoal and restrained blue links. */
-  :global(body) { background: #1b1b1b; color: #ececec; }
+  /* Homepage: same site-wide color tokens and font, including light mode. */
   :global(body::before) { display: none; }
-  :global(.site-header) { background: #1b1b1b; border-bottom: 1px solid #333; }
-  :global(.site-header .nav-shell) { width: min(calc(100% - 2.5rem), 980px); min-height: 60px; }
-  :global(.site-header .brand) { color: #e7e7e7; font-size: .92rem; font-weight: 500; }
+  :global(.site-header) { background: var(--color-bg); border-bottom: 1px solid var(--color-border); }
+  :global(.site-header .nav-shell) { width: min(calc(100% - 2.5rem), 980px); min-height: 64px; }
+  :global(.site-header .brand) { font-size: .95rem; font-weight: 600; }
   :global(.site-header .brand-glyph) { display: none; }
-  :global(.site-header .brand-stop) { color: #369ec5; }
-  :global(.site-header .nav-anchor) { color: #bfc0c2; font-size: .9rem; background: none; }
-  :global(.site-header .nav-anchor:hover), :global(.site-header .nav-anchor.current) { color: #36a8d6; background: none; }
-  :global(.site-header .nav-cv) { border: 0; color: #c7c7c7; font-size: .9rem; font-weight: 400; padding: .4rem; }
-  :global(.site-header .nav-cv:hover) { color: #36a8d6; background: none; }
+  :global(.site-header .nav-anchor) { font-size: .89rem; background: transparent; }
+  :global(.site-header .nav-cv) { font-size: .88rem; font-weight: 500; }
   :global(.site-footer) { display: none; }
   :global(.back-to-top) { display: none !important; }
 
-  .minimal-home { max-width: 970px; width: calc(100% - 2.5rem); margin: 0 auto; padding: 52px 0 72px; }
-  .intro-layout { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: clamp(26px, 4vw, 48px); align-items: start; }
-  .intro-copy { max-width: 850px; }
-  h1, h2, h3, p { margin-top: 0; }
-  h1 { margin: 0 0 20px; font-size: clamp(2.2rem, 4vw, 2.8rem); font-weight: 400; letter-spacing: -.04em; line-height: 1.2; color: #e8e8e8; }
-  .intro-copy { padding-top: 2px; }
-  .intro-copy p { font-size: 1rem; line-height: 1.63; color: #e0e0e0; margin: 0 0 18px; }
-  .intro-copy strong { font-weight: 650; color: #f4f4f4; }
-  .minimal-home a { color: #39aad8; text-decoration: none; }
-  .minimal-home a:hover { color: #7fd9f2; text-decoration: underline; }
-  .profile-aside { padding-top: 4px; display: flex; flex-direction: column; gap: 13px; min-width: 0; }
-  .profile-portrait { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 29%; border-radius: 7px; border: 1px solid #3e3e3e; background: #242424; }
-  .profile-details { margin-top: 0; display: flex; flex-direction: column; gap: 3px; font: .86rem/1.5 var(--font-sans, Arial, sans-serif); overflow-wrap: anywhere; color: #d5d5d5; }
-  .contributions { margin-top: 52px; }
-  .contribution-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
-  h2 { margin: 0 0 25px; font-size: clamp(1.55rem, 3vw, 2rem); font-weight: 400; letter-spacing: -.025em; line-height: 1.25; color: #ececec; }
-  .section-link { white-space: nowrap; font-size: .89rem; }
-  .publication-list { display: flex; flex-direction: column; gap: 21px; }
-  .publication-row { display: grid; grid-template-columns: 123px minmax(0, 1fr); gap: 22px; align-items: start; }
-  .conference-tag { display: block; margin-top: 4px; border-radius: 3px; background: #389dc0; color: #10191e; text-align: center; padding: 3px 6px; font-size: .74rem; line-height: 1.3; font-weight: 650; letter-spacing: .02em; }
-  h3 { color: #f3f3f3; font-size: 1rem; font-weight: 620; margin-bottom: 2px; line-height: 1.48; }
-  .publication-copy p { font-size: .9rem; line-height: 1.48; margin: 2px 0; color: #ddd; }
-  .publication-copy .publication-venue { color: #d1d1d1; }
-  .publication-copy .publication-note { color: #a4a4a4; font-size: .79rem; margin-top: 3px; }
-  .social-links { display: flex; justify-content: center; align-items: center; gap: 20px; padding-top: 55px; }
-  .social-links a { color: #e5e5e5; display: inline-flex; justify-content: center; align-items: center; width: 38px; height: 38px; }
-  .social-links a:hover { color: #39aad8; }
+  .minimal-home {
+    width: min(calc(100% - 2.5rem), 970px);
+    margin: 0 auto;
+    padding: 0 0 74px;
+  }
+  .minimal-home h1,
+  .minimal-home h2,
+  .minimal-home h3,
+  .minimal-home p { margin-top: 0; }
+  .minimal-home a {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+  .minimal-home a:hover {
+    color: var(--color-accent-hover);
+    text-decoration: underline;
+  }
+
+  .hero-area { padding-top: clamp(62px, 9vw, 100px); }
+  .hero-eyebrow {
+    margin: 0 0 23px;
+    color: var(--color-accent);
+    font-family: var(--font-mono, monospace);
+    font-size: .73rem;
+    line-height: 1.6;
+    font-weight: 500;
+    letter-spacing: .125em;
+  }
+  .hero-eyebrow span { margin: 0 .28em; }
+  .hero-title {
+    max-width: 970px;
+    margin: 0 0 clamp(35px, 5vw, 58px) !important;
+    color: var(--color-text);
+    font-size: clamp(3rem, 6.5vw, 5.15rem);
+    font-weight: 750;
+    line-height: 1.07;
+    letter-spacing: -.058em;
+    text-wrap: balance;
+  }
+  .hero-title span {
+    display: block;
+    color: var(--color-accent);
+  }
+
+  .intro-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 214px;
+    gap: clamp(28px, 5vw, 65px);
+    align-items: start;
+  }
+  .intro-copy { min-width: 0; max-width: 705px; }
+  .intro-copy p {
+    margin: 0 0 17px;
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    line-height: 1.77;
+  }
+  .intro-copy .hero-lead {
+    color: var(--color-text);
+    font-size: clamp(1.04rem, 1.55vw, 1.15rem);
+    line-height: 1.76;
+  }
+  .intro-copy strong {
+    color: var(--color-text);
+    font-weight: 650;
+  }
+  .hero-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 30px;
+    padding-top: 10px;
+  }
+  .hero-links a {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+    font-weight: 650;
+    font-size: .91rem;
+    line-height: 1.5;
+  }
+  .hero-links a span { transition: transform .18s ease; }
+  .hero-links a:hover span { transform: translate(2px, -2px); }
+
+  .profile-aside {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    gap: 14px;
+    padding-top: 5px;
+  }
+  .profile-portrait {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center 29%;
+    border: 1px solid var(--color-border);
+    border-radius: 7px;
+    background: var(--color-surface);
+  }
+  .profile-details {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    color: var(--color-text-muted);
+    font-size: .83rem;
+    line-height: 1.55;
+  }
+
+  .contributions {
+    margin-top: clamp(67px, 9vw, 105px);
+    padding-top: 29px;
+    border-top: 1px solid var(--color-border);
+  }
+  .contribution-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 25px;
+  }
+  .contribution-heading h2 {
+    margin: 0;
+    color: var(--color-text);
+    font-size: clamp(1.45rem, 2.6vw, 1.83rem);
+    font-weight: 500;
+    letter-spacing: -.025em;
+    line-height: 1.25;
+  }
+  .section-link { flex-shrink: 0; white-space: nowrap; font-size: .89rem; }
+  .publication-list { display: flex; flex-direction: column; gap: 27px; }
+  .publication-row {
+    display: grid;
+    grid-template-columns: 124px minmax(0, 1fr);
+    gap: 22px;
+    align-items: start;
+  }
+  .conference-tag {
+    display: block;
+    margin-top: 5px;
+    border-radius: 3px;
+    background: var(--color-accent);
+    color: var(--color-bg);
+    text-align: center;
+    padding: 5px 6px;
+    font-size: .72rem;
+    line-height: 1.3;
+    font-weight: 700;
+    letter-spacing: .025em;
+  }
+  .publication-copy h3 {
+    margin: 0 0 5px;
+    color: var(--color-text);
+    font-size: 1.04rem;
+    line-height: 1.5;
+    font-weight: 630;
+  }
+  .publication-copy p {
+    margin: 3px 0;
+    color: var(--color-text-muted);
+    font-size: .9rem;
+    line-height: 1.55;
+  }
+  .publication-copy .publication-venue { color: var(--color-text-muted); }
+  .publication-copy .publication-note {
+    margin-top: 5px;
+    color: var(--color-text-subtle);
+    font-size: .81rem;
+  }
+  .social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 21px;
+    padding-top: 64px;
+  }
+  .social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    color: var(--color-text);
+  }
+  .social-links a:hover { color: var(--color-accent); }
   .social-links svg { width: 29px; height: 29px; }
-  .social-links .cv-link { font: 700 1.03rem/1 var(--font-sans, sans-serif); letter-spacing: -.03em; border: 2px solid currentColor; border-radius: 5px; width: 36px; height: 30px; }
+  .social-links .cv-link {
+    width: 36px;
+    height: 30px;
+    border: 2px solid currentColor;
+    border-radius: 5px;
+    font-size: 1rem;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: -.03em;
+  }
+
   @media (max-width: 800px) {
-    .minimal-home { padding-top: 38px; }
-    .intro-layout { grid-template-columns: minmax(0, 1fr) 190px; gap: 24px; }
-    .profile-aside { padding-top: 3px; }
-    .intro-copy p { font-size: .95rem; }
+    .intro-layout { grid-template-columns: minmax(0, 1fr) 185px; gap: 26px; }
+    .hero-title { font-size: clamp(2.95rem, 6.2vw, 4.8rem); }
+    .intro-copy p { font-size: .97rem; }
   }
   @media (max-width: 650px) {
-    .minimal-home { width: calc(100% - 2rem); padding: 35px 0 55px; }
-    .intro-layout { display: flex; flex-direction: column; gap: 14px; }
-    .profile-aside { padding-top: 0; width: 100%; display: flex; flex-direction: row; align-items: center; gap: 18px; }
-    .profile-portrait { width: 132px; max-width: 38%; flex: 0 0 auto; }
-    .profile-details { margin-top: 0; font-size: .82rem; }
-    .contributions { margin-top: 43px; }
-    .publication-row { grid-template-columns: 1fr; gap: 8px; }
-    .conference-tag { justify-self: start; width: auto; padding-inline: 9px; }
+    .minimal-home { width: calc(100% - 2rem); padding-bottom: 55px; }
+    .hero-area { padding-top: 48px; }
+    .hero-eyebrow { font-size: .63rem; letter-spacing: .085em; }
+    .hero-title {
+      margin-bottom: 30px !important;
+      font-size: clamp(2.35rem, 9vw, 3.3rem);
+      line-height: 1.12;
+    }
+    .intro-layout { grid-template-columns: 1fr; gap: 25px; }
+    .profile-aside {
+      width: 100%;
+      flex-direction: row;
+      align-items: center;
+      gap: 18px;
+      padding-top: 0;
+    }
+    .profile-portrait { width: 125px; max-width: 37%; flex: 0 0 auto; }
+    .profile-details { font-size: .81rem; }
+    .contributions { margin-top: 59px; }
     .contribution-heading { align-items: start; }
-    .section-link { margin-top: 5px; font-size: .78rem; }
-    .social-links { padding-top: 44px; }
+    .contribution-heading h2 { font-size: 1.42rem; }
+    .section-link { margin-top: 4px; font-size: .8rem; }
+    .publication-row { grid-template-columns: 1fr; gap: 8px; }
+    .conference-tag { justify-self: start; width: auto; padding-inline: 10px; }
+    .social-links { padding-top: 47px; }
   }
-  @media (prefers-reduced-motion: reduce) { .minimal-home * { transition: none; } }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-links a span { transition: none; }
+  }
 </style>
