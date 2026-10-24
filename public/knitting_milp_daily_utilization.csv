@@ -1,0 +1,9 @@
+scenario,machine_group,date,bulk_minutes,effective_capacity,utilization_pct
+planner_draft,A,2026-11-02,900,1122,80.21
+planner_draft,A,2026-11-03,1120,1122,99.82
+planner_draft,B,2026-11-02,1120,1122,99.82
+planner_draft,B,2026-11-03,1020,1122,90.91
+milp_optimum,A,2026-11-02,1094,1122,97.5
+milp_optimum,A,2026-11-03,550,1122,49.02
+milp_optimum,B,2026-11-02,1120,1122,99.82
+milp_optimum,B,2026-11-03,1080,1122,96.26

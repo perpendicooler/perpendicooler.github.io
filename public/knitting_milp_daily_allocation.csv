@@ -1,0 +1,11 @@
+scenario,product,machine_group,date,pieces,booking_smv,bulk_smv,bulk_minutes
+planner_draft,P1,A,2026-11-03,16,65,70,1120
+planner_draft,P1,B,2026-11-03,8,60,45,360
+planner_draft,P2,A,2026-11-02,18,55,50,900
+planner_draft,P3,B,2026-11-03,12,58,55,660
+planner_draft,P4,B,2026-11-02,14,88,80,1120
+milp_optimum,P1,B,2026-11-03,24,60,45,1080
+milp_optimum,P2,A,2026-11-02,7,55,50,350
+milp_optimum,P2,A,2026-11-03,11,55,50,550
+milp_optimum,P3,A,2026-11-02,12,60,62,744
+milp_optimum,P4,B,2026-11-02,14,88,80,1120
