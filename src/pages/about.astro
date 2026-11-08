@@ -349,6 +349,14 @@ const skillGroups: { title: string; icons: SkillIcon[] }[] = [
           </ul>
         </div>
 
+        <div class="beyond-certificates" aria-label="Cubing certificates">
+          <p class="beyond-certificate-label">SELECTED CERTIFICATES</p>
+          <div class="beyond-certificate-links">
+            <a class="inline-link" href="/images/cubemania-v3-champion-2022.jpg" target="_blank" rel="noopener noreferrer">Cubemania V3.0 — Champion certificate (2022) ↗</a>
+            <a class="inline-link" href="/images/rubiks-cube-workshop-instructor-2022.jpg" target="_blank" rel="noopener noreferrer">Rubik's Cube workshop — Instructor certificate (2022) ↗</a>
+          </div>
+        </div>
+
         <div class="beyond-talk">
           <p class="beyond-talk-label">FROM PUZZLES TO MATHEMATICS</p>
           <p>
@@ -705,6 +713,22 @@ const skillGroups: { title: string; icons: SkillIcon[] }[] = [
     line-height: 1.65;
     color: var(--color-text);
   }
+
+  .beyond-certificates { padding-top: 28px; }
+  .beyond-certificate-label {
+    margin: 0 0 12px;
+    color: var(--color-text-subtle);
+    font-size: 0.83rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+  }
+  .beyond-certificate-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 9px;
+  }
+  .beyond-certificate-links .inline-link { font-size: 0.91rem; }
 
   .beyond-talk {
     margin-top: 36px;
