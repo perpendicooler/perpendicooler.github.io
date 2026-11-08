@@ -35,7 +35,7 @@ const timeline = [
 const awards = [
   "Champion — Mechnovation 2022, SUST",
   "Champion — Mechnovation 2019, SUST",
-  "Top 20 in Bangladesh — Knights Cubing Open 2019 (WCA)",
+  "Top 100 in Bangladesh — 10.34-second single solve (WCA)",
 ];
 
 // Lightweight icon grid; no JavaScript library or other site file needed.
@@ -343,7 +343,11 @@ const skillGroups: { title: string; icons: SkillIcon[] }[] = [
             {awards.map((award, index) => (
               <li>
                 <span class="beyond-award-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-                <span class="beyond-award-title">{award}</span>
+                <span class="beyond-award-title">
+                  {index === 2 ? (
+                    <a class="inline-link" href="https://wca.cuber.pro/person/2019SHAK05" target="_blank" rel="noopener noreferrer">{award} ↗</a>
+                  ) : award}
+                </span>
               </li>
             ))}
           </ul>
