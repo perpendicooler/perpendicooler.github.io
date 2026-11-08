@@ -344,7 +344,9 @@ const skillGroups: { title: string; icons: SkillIcon[] }[] = [
               <li>
                 <span class="beyond-award-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
                 <span class="beyond-award-title">
-                  {index === 2 ? (
+                  {index === 1 ? (
+                    <a class="inline-link" href="/images/mechnovation-2019-cubemania-champion.png" target="_blank" rel="noopener noreferrer">{award} ↗</a>
+                  ) : index === 2 ? (
                     <a class="inline-link" href="https://wca.cuber.pro/person/2019SHAK05" target="_blank" rel="noopener noreferrer">{award} ↗</a>
                   ) : award}
                 </span>
@@ -357,6 +359,7 @@ const skillGroups: { title: string; icons: SkillIcon[] }[] = [
           <p class="beyond-certificate-label">SELECTED CERTIFICATES</p>
           <div class="beyond-certificate-links">
             <a class="inline-link" href="/images/cubemania-v3-champion-2022.jpg" target="_blank" rel="noopener noreferrer">Cubemania V3.0 — Champion certificate (2022) ↗</a>
+            <a class="inline-link" href="/images/mechnovation-2019-cubemania-champion.png" target="_blank" rel="noopener noreferrer">Cubemania — Champion award (2019) ↗</a>
             <a class="inline-link" href="/images/rubiks-cube-workshop-instructor-2022.jpg" target="_blank" rel="noopener noreferrer">Rubik's Cube workshop — Instructor certificate (2022) ↗</a>
           </div>
         </div>
